@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,500,600,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+
+            function myFunction() {
+                var x = document.getElementById("myDIV");
+                var y = document.getElementById("myDIV1");
+                y.style.display = "none"
+
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                   none;
+                }
+            }
+
+            function myFunction1() {
+                var x = document.getElementById("myDIV1");
+                var y = document.getElementById("myDIV");
+                y.style.display = "none"
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    none;
+                }
+            }
+            $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+        </script>
+
+
+
+    </head>
+
+<div style="width:100%;margin:0 auto;">
+
+    <div style="width:20%;background-color:#eef2f3;height:100%;float:left">
+        <div style="height:8%;background-color:white">
+            <h1 class="header" href="/index.html" style="color:#2F5FD2;font-weight:600;font-size:22px;text-align:left;padding-top:15px;padding-left:18px;">Zapp<sub style="font-size:12px">Beta</sub></h1>
+        </div>
+        <div style="height:92%">
+            <h2 style="color:black;font-weight:400;font-size:17px;text-align:left;padding-top:20px;padding-left:17px;"><b>Account</b></h2>
+            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="send.html" style="color:black">Send</a></h2>
+            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">Transaction History</h2>
+            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="withdraw.html" style="color:black">Withdraw</a></h2>
+
+
+        </div>
+    </div>
+    <div style="width:80%;background-color:white;height:100%;float:left;">
+        <div>
+            <h2 class="header" style="font-size:26px;font-weight:600;margin-top:6.8%;margin-left:6.8%">{{ username }}</h2>
+            <h2 class="header" style="font-size:16px;font-weight:300;margin-top:1%;color:#2F5FD2;margin-left:6.8%"><span style="font-weight:400;">Your External Address:</span>
+
+                <button data-toggle="tooltip" data-placement="right" title="The address below is your external BTC address or bank. Deposits MUST come from this address." type="button" class="btn btn-secondary" style="border:0;margin-top:-0.26%;border-radius:50%;background-color:#2F5FD2;color:white;font-size:11px;padding:0px;width:15px;height:15px"  >i</button>
+
+                <br>{{ address }}</h2>
+            <h2 class="header" style="font-size:21px;font-weight:400;margin-top:4%;margin-left:6.8%">Balance</h2>
+            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1.1%;margin-left:6.8%"><span style="font-weight:600;color:#2F5FD2">0.0002 BTC</span></h2>
+            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:6.8%"><span style="font-weight:600;color:#2F5FD2">1.63 USD</span><span style="font-size:12px;color:black;font-weight:400;margin-left:5px">Change Currency</span></h2>
+
+            <!--<a href="/aboutus.html" style="color:white">
+        <button class="header" style="border-width:0;border-radius:10px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:6.8%;clear:both;display:flex;justify-content:center;font-size:15px;margin-top:20px;height:40px">
+                    <a href="/aboutus.html"><span style="color:white">Deposit</span></a>
+                </button>
+                </a>-->
+        </div>
+
+
+        <div style="float:left;margin-top:5%;margin-left:6.8%">
+            <h2 class="header" style="font-size:21px;font-weight:400;">Settings</h2>
+
+            <p class="header" style="font-size:16px;font-weight:300;margin-top:10%;color:black">Change Password </p>
+              <a href="/aboutus.html" style="color:white">
+        <button class="header" style="border-width:0;border-radius:10px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:0px;clear:both;display:flex;justify-content:center;font-size:15px;margin:0 auto;margin-top:20px;">
+                    <a href="/logout"><span style="color:white">Log Out</span></a>
+                </button>
+                </a>
+
+
+        </div>
+
+
+        <!--<div style="float:left;margin-left:20%;margin-top:7%;">
+            <h2 class="header" style="font-size:21px;font-weight:600;">Latest Transactions</h2>
+
+            <p class="header" style="font-size:15px;font-weight:600;margin-top:10%;color:#2F5FD2"><span style="margin-right:10px;color:black;font-size:14px;font-weight:400">Yesterday</span>church123 <span style="margin-left:10px;color:red;font-weight:400">-12USD</span><br><span style="margin-right:10px;color:black;font-size:16px;font-weight:300"><span style="font-weight:400">Message:</span> Payment for dinner yesterday</span> </p>
+
+            <p class="header" style="font-size:15px;font-weight:600;margin-top:10%;color:#2F5FD2"><span style="margin-right:10px;color:black;font-size:14px;font-weight:400">Yesterday</span> jacobfoster <span style="margin-left:10px;color:green;font-weight:400">+12USD</span><br><span style="margin-right:10px;color:black;font-size:16px;font-weight:300"><span style="font-weight:400">Message:</span> Payment for dinner yesterday</span></p>
+
+            <p class="header" style="font-size:15px;font-weight:600;margin-top:10%;color:#2F5FD2"><span style="margin-right:10px;color:black;font-size:14px;font-weight:400">02/06/18</span> ronaldo92 <span style="margin-left:10px;color:red;font-weight:400">-12USD</span><br><span style="margin-right:10px;color:black;font-size:16px;font-weight:300"><span style="font-weight:400">Message:</span> Payment for dinner yesterday</span></p>
+
+            <p class="header" style="font-size:15px;font-weight:600;margin-top:10%;color:#2F5FD2"><span style="margin-right:10px;color:black;font-size:14px;font-weight:400">03/05/18</span> jongbinwon2 <span style="margin-left:10px;color:red;font-weight:400">-18USD</span><br><span style="margin-right:10px;color:black;font-size:16px;font-weight:300"><span style="font-weight:400">Message:</span> Payment for dinner yesterday</span></p>
+
+            <p class="header" style="font-size:15px;font-weight:600;margin-top:10%;color:#2F5FD2"><span style="margin-right:10px;color:black;font-size:14px;font-weight:400">02/02/28</span> danepham2 <span style="margin-left:10px;color:green;font-weight:400">+30USD</span><br><span style="margin-right:10px;color:black;font-size:16px;font-weight:300"><span style="font-weight:400">Message:</span> Payment for dinner yesterday</span></p>
+
+        </div>-->
+
+    </div>
+
+
+
+    </div>
+     <footer style="position: fixed; bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color:white">
+        <div style="text-align:center">
+        <ul style="font-weight:400;font-size:13px;list-style-type:none;display:inline;" class="header">
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;font-weight:400;font-size:15px;color:#2F5FD2;">
+                ⓒ Zapp Project
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
+                <a href="aboutus.html" style="color:#2F5FD2">About Us</a>
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2" style="color:#2F5FD2">
+                <a href="contribute.html" style="color:#2F5FD2">Contribute</a>
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
+                <a href="faq.html" style="color:#2F5FD2">FAQ</a>
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
+                <a href="terms.html" style="color:#2F5FD2">Terms of Service</a>
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2;margin-right:40px;">
+                <a href="Contact.html" style="color:#2F5FD2">Contact</a>
+            </li>
+
+        </ul>
+        </div>
+    </footer>
+</html>

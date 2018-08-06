@@ -1,0 +1,54 @@
+#login-form {
+    margin-top: 25px;
+}
+
+.page-form {
+    max-width: 480px;
+}
+.header{
+    font-family: 'roboto','Open Sans', sans-serif;
+}
+body{
+    margin: 0;
+}
+.mainhead{
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.div-grid{
+
+    width: 200px;
+    height: 200px;
+
+      margin: auto;
+    margin-top: 3%;
+      float: left;
+    border-radius: 4px;
+
+
+
+
+}
+
+.features-para{
+    text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;text-align:center;width:80%;margin:auto;margin-top:5%;font-family:roboto;
+}
+.div-grid img{
+
+  height:160px;width:160px;border-radius: 3%;display: block;margin: auto
+
+
+
+
+}
+
+.tooltip-red + .tooltip > .tooltip-inner {background-color: white;color:black;border:0;margin-top:-0.26%;border-radius:50%;background-color:#2F5FD2;color:white;font-size:11px;padding:0px;width:15px;height:15px}
+
+}
