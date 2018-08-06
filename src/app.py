@@ -31,9 +31,34 @@ def register_template():
 def login_template():
     return render_template('login.html')
 
+
+
 @app.route('/contribute')
 def contribute():
      return render_template('Contribute.html')
+
+@app.route('/aboutus')
+def about():
+     return render_template('aboutus.html')
+
+@app.route('/FAQ')
+def FAQ():
+    return render_template('faq.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/send')
+def send():
+    return render_template('send.html')
+
+@app.route('/withdraw')
+def withdraw():
+    return render_template('withdraw.html')
+
+
+
 
 
 
@@ -50,10 +75,11 @@ def login_user():
 
     if User.login_valid(username, password):
         User.login(username)
+        user = User.get_by_username(session['username'])
     else:
         session['username'] = None
-
-    return render_template("profile.html", username=session['username'])
+        return render_template("home.html", username=session['username'])
+    return render_template("profile.html", username=session['username'], address=user.address)
 
 
 @app.route('/auth/register', methods=['POST'])

@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,500,600,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+
+            function myFunction() {
+                var x = document.getElementById("myDIV");
+                var y = document.getElementById("myDIV1");
+                y.style.display = "none"
+
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                   none;
+                }
+            }
+
+            function myFunction1() {
+                var x = document.getElementById("myDIV1");
+                var y = document.getElementById("myDIV");
+                y.style.display = "none"
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    none;
+                }
+            }
+        </script>
+
+
+
+    </head>
+
+<div style="width:100%;margin:0 auto;">
+
+    <div style="width:20%;background-color:#eef2f3;height:100%;float:left">
+        <div style="height:8%;background-color:white;">
+            <h1 class="header" href="/index.html" style="color:#2F5FD2;;font-weight:600;font-size:22px;text-align:left;padding-top:15px;padding-left:18px;">Zapp<sub style="font-size:12px">Beta</sub></h1>
+        </div>
+        <div style="height:92%">
+            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:20px;padding-left:17px;"><a href="/" style="color:black">Account</a></h2>
+            <h2 style="color:black;font-weight:400;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><b>Send</b></h2>
+            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">Transaction History</h2>
+            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="/withdraw" style="color:black">Withdraw</a></h2>
+
+
+        </div>
+    </div>
+
+
+         <div style="width:80%;background-color:white;height:100%;float:left">
+
+             <div style="float:left;margin-left:6%;margin-top:6%;">
+           <h2 class="header" style="font-size:26px;font-weight:600;margin-top:5%;margin-left:6%">Send BTC</h2>
+            <form style="margin-left:6%">
+                <input placeholder="Recipient Username" style="border:0;border-bottom:1px solid #2F5FD2;width:300px;height;50px;margin-top:8%;outline: none;" type="text"></input>
+            <br>
+             <input placeholder="Amount in USD" style="border:0;border-bottom:1px solid #2F5FD2;width:300px;height;50px;margin-top:15%;user-select: none;outline: none;" type="number"></input>
+             <br>
+             <textarea placeholder="Message (50 characters)" style="border:0;border-bottom:1px solid #2F5FD2;width:150%;height;50px;margin-top:15%;user-select: none;outline: none;" type="text"></textarea>
+
+            </form>
+    <a href="/signup.html" style="color:white">
+                <button class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:6%;clear:both;display:flex;justify-content:center;font-size:15px;margin-top:25px;">
+                    <a href="/signup.html"><span  style="color:white">Send</span></a>
+                </button>
+                    </a>
+
+        </div>
+
+
+        <div style="float:left;margin-left:15%;margin-top:6%;width:50%">
+            <h2 class="header" style="font-size:21px;font-weight:400;margin-top:2%;margin-left:6%">Balance</h2>
+
+            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:2%;margin-left:6%"><span style="font-weight:600;color:#2F5FD2">0.0002 BTC</span></h2>
+            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:6%"><span style="font-weight:600;color:#2F5FD2">1.63 USD</span></h2>
+
+            <h2 class="header" style="font-size:21px;font-weight:400;margin-top:15%;margin-left:6%">Contacts<span style="font-size:14px;font-weight:400;margin-top:2%;margin-left:5px;color:#2F5FD2">See Full</span></h2>
+            <ul>
+                <li style="list-style-type:none;font-size:18px;font-weight:300;margin-top:2%;margin-left:-1%">Jongbin Won<br><span style="font-size:13px;font-weight:300;margin-top:2%;margin-left:0;color:#2F5FD2">View Transactions</span></li>
+                <li style="list-style-type:none;font-size:18px;font-weight:300;margin-top:3%;margin-left:-1%";>Seokhee Won<br><span style="font-size:13px;font-weight:300;margin-top:2%;margin-left:0;color:#2F5FD2">View Transactions</span></li>
+                <li style="list-style-type:none;font-size:18px;font-weight:300;margin-top:3%;margin-left:-1%";>Dongle1234<br><span style="font-size:13px;font-weight:300;margin-top:2%;margin-left:0;color:#2F5FD2">View Transactions</span></li>
+                <li style="list-style-type:none;font-size:18px;font-weight:300;margin-top:3%;margin-left:-1%";>Jayjay1292<br><span style="font-size:13px;font-weight:300;margin-top:2%;margin-left:0;color:#2F5FD2">View Transactions</span></li>
+                <li style="list-style-type:none;font-size:18px;font-weight:300;margin-top:3%;margin-left:-1%";>genesis29<br><span style="font-size:13px;font-weight:300;margin-top:2%;margin-left:0;color:#2F5FD2">View Transactions</span></li>
+                <li style="list-style-type:none;font-size:18px;font-weight:300;margin-top:3%;margin-left:-1%">ferrari4id<br><span style="font-size:13px;font-weight:300;margin-top:2%;margin-left:0;color:#2F5FD2">View Transactions</span></li>
+            </ul>
+        </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+     <footer style="position: fixed; bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color:white">
+        <div style="text-align:center">
+        <ul style="font-weight:400;font-size:13px;list-style-type:none;display:inline;" class="header">
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;font-weight:400;font-size:15px;color:#2F5FD2;">
+                ⓒ Zapp Project
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
+                <a href="aboutus.html" style="color:#2F5FD2">About Us</a>
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2" style="color:#2F5FD2">
+                <a href="contribute.html" style="color:#2F5FD2">Contribute</a>
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
+                <a href="faq.html" style="color:#2F5FD2">FAQ</a>
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
+                <a href="terms.html" style="color:#2F5FD2">Terms of Service</a>
+            </li>
+            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2;margin-right:40px;">
+                <a href="Contact.html" style="color:#2F5FD2">Contact</a>
+            </li>
+
+        </ul>
+        </div>
+    </footer>
+</html>
