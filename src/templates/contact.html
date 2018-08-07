@@ -56,6 +56,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" class="header">
 
+    {% if session['username'] %}
     <ul class="navbar-nav ml-auto" style="margin-right:2%;" >
         <li class="nav-item active">
         <a class="nav-link" href="/" style="font-weight:300;font-size:15px;color:black">Home</a>
@@ -66,19 +67,42 @@
 
 
         <li class="nav-item active">
-            <a class="nav-link" href="/contribute" style="font-weight:300;font-size:15px;color:black">Contribute</a>
+        <a class="nav-link" href="/contribute" style="font-weight:300;font-size:15px;color:black">Contribute</a>
       </li>
         <li class="nav-item active">
         <a class="nav-link" href="/FAQ" style="font-weight:300;font-size:15px;color:black">FAQ</a>
       </li>
         <li class="nav-item active">
-        <a class="nav-link" href="#" style="font-weight:300;font-size:15px;color:black" ><u>Contact</u></a>
+        <a class="nav-link" href="/contact" style="font-weight:300;font-size:15px;color:black" ><u>Contact</u></a>
+      </li>
+         <li class="nav-item active">
+        <a class="nav-link" href="/"   style="font-weight:bold;font-size:15px;color:black">Account</a>
+      </li>
+    </ul>
+ {% else %}
+      <ul class="navbar-nav ml-auto" style="margin-right:2%;" >
+        <li class="nav-item active">
+        <a class="nav-link" href="/" style="font-weight:300;font-size:15px;color:black">Home</a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/aboutus" style="font-weight:300;font-size:15px;color:black">More Info</a>
+      </li>
+
+
+        <li class="nav-item active">
+        <a class="nav-link" href="/contribute" style="font-weight:300;font-size:15px;color:black">Contribute</a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/FAQ" style="font-weight:300;font-size:15px;color:black">FAQ</a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/contact" style="font-weight:300;font-size:15px;color:black" ><u>Contact</u></a>
       </li>
          <li class="nav-item active">
         <a class="nav-link" href="#" id="popover2" data-placement="bottom" style="font-weight:bold;font-size:15px;color:black">Log In</a>
       </li>
     </ul>
-
+      {% endif %}
   </div>
 </nav>
     <div style="display:none;">

@@ -59,6 +59,8 @@
             <h2 style="color:black;font-weight:400;font-size:17px;text-align:left;padding-top:20px;padding-left:17px;"><b>Account</b></h2>
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="/send" style="color:black">Send</a></h2>
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">Transaction History</h2>
+                                    <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">Contacts</h2>
+
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="/withdraw" style="color:black">Withdraw</a></h2>
 
 
@@ -66,26 +68,34 @@
     </div>
     <div style="width:80%;background-color:white;height:100%;float:left;">
         <div>
-            <h2 class="header" style="font-size:26px;font-weight:600;margin-top:6.8%;margin-left:6.8%">{{ username }}</h2>
-            <h2 class="header" style="font-size:16px;font-weight:300;margin-top:1%;color:#2F5FD2;margin-left:6.8%"><span style="font-weight:400;">Your External Address:</span>
+            <h2 class="header" style="font-size:34px;font-weight:600;margin-top:6.8%;margin-left:6.8%;color:#2F5FD2">{{ username }}</h2>
 
-                <button data-toggle="tooltip" data-placement="right" title="The address below is your external BTC address or bank. Deposits MUST come from this address." type="button" class="btn btn-secondary" style="border:0;margin-top:-0.26%;border-radius:50%;background-color:#2F5FD2;color:white;font-size:11px;padding:0px;width:15px;height:15px"  >i</button>
+            <h2 class="header" style="font-size:16px;font-weight:400;margin-top:1%;color:#2F5FD2;margin-left:6.8%"><span style="font-weight:400;">{{ address }}</span>
+            <div style="float:right;margin-left:15%;margin-top:-3.8%;width:50%;clear:both;">
 
-                <br>{{ address }}</h2>
-            <h2 class="header" style="font-size:21px;font-weight:400;margin-top:4%;margin-left:6.8%">Balance</h2>
-            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1.1%;margin-left:6.8%"><span style="font-weight:600;color:#2F5FD2">0.0002 BTC</span></h2>
-            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:6.8%"><span style="font-weight:600;color:#2F5FD2">1.63 USD</span><span style="font-size:12px;color:#2F5FD2;font-weight:400;margin-left:5px">Change Currency</span></h2>
+                <h2 class="header" style="font-size:25px;font-weight:300;margin-top:0%;margin-left:6%"><span style="font-weight:600;color:#2F5FD2">0.0002 BTC</span></h2>
+                <h2 class="header" style="font-size:20px;font-weight:300;margin-top:0%;margin-left:6%"><span style="font-weight:600;color:#2F5FD2">1.63 USD</span></h2>
 
-              <h2 class="header" style="font-size:21px;font-weight:400;margin-top:4%;margin-left:6.8%">Deposit</h2>
+
+            </div>
+
+
+
+               <button data-toggle="tooltip" data-placement="right" title="The address below is your external BTC address or bank. Deposits MUST come from this address.
+and all withdrawals will be to this address." type="button" class="btn btn-secondary" style="border:0;margin-top:-0.26%;border-radius:50%;background-color:#2F5FD2;color:white;font-size:11px;padding:0px;width:15px;height:15px"  >i</button>
+
+                </h2>
+
+              <h2 class="header" style="font-size:21px;font-weight:400;margin-top:5%;margin-left:6.8%;color:#2F5FD2">Deposit</h2>
                  <p class="header" style="font-size:16px;font-weight:300;margin-top:1%;color:black;margin-left:6.8%">To Deposit into your Zapp account, send BTC <br>to the address located below.
                   </p>
-            <h2 class="header" style="font-size:16px;font-weight:300;margin-top:1%;color:#2F5FD2;margin-left:6.8%"><span style="font-weight:400;">﻿1LLZQBtQmdYidGusjMtAixHZ3i27MiRVUS</span>
+            <h2 class="header" style="font-size:15px;font-weight:300;margin-top:1%;color:black;margin-left:6.8%"><span style="font-weight:400;">﻿1LLZQBtQmdYidGusjMtAixHZ3i27MiRVUS</span></h2>
 
         </div>
 
 
         <div style="float:left;margin-top:5%;margin-left:6.8%">
-            <h2 class="header" style="font-size:21px;font-weight:400;">Settings</h2>
+            <h2 class="header" style="font-size:21px;font-weight:400;color:#2F5FD2">Settings</h2>
 
             <p class="header" style="font-size:16px;font-weight:300;margin-top:10%;color:black">Change Password </p>
               <a href="/aboutus.html" style="color:white">

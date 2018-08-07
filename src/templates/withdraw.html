@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -40,9 +39,6 @@
                     none;
                 }
             }
-            $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
         </script>
 
 
@@ -53,12 +49,14 @@
 
     <div style="width:20%;background-color:#eef2f3;height:100%;float:left">
         <div style="height:8%;background-color:white;">
-            <h1 class="header" href="/" style="color:#2F5FD2;;font-weight:600;font-size:22px;text-align:left;padding-top:15px;padding-left:18px;">Zapp<sub style="font-size:12px">Beta</sub></h1>
+            <h1 class="header" href="/index.html" style="color:#2F5FD2;;font-weight:600;font-size:22px;text-align:left;padding-top:15px;padding-left:18px;">Zapp<sub style="font-size:12px">Beta</sub></h1>
         </div>
         <div style="height:92%">
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:20px;padding-left:17px;"><a href="/" style="color:black">Account</a></h2>
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="/send" style="color:black">Send</a></h2>
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">Transaction History</h2>
+                        <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">Contacts</h2>
+
             <h2 style="color:black;font-weight:400;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><b>Withdraw</b></h2>
 
 
@@ -68,23 +66,16 @@
 
          <div style="width:80%;background-color:white;height:100%;float:left">
 
-             <div style="float:left;margin-left:4.5%;margin-top:5%;">
-           <h2 class="header" style="font-size:26px;font-weight:600;margin-top:5%;margin-left:6%">Withdraw BTC</h2>
+             <div style="float:left;margin-left:6%;margin-top:6%;">
+           <h2 class="header" style="font-size:26px;font-weight:600;margin-top:5%;margin-left:6%;color:#2F5FD2">Withdraw BTC</h2>
             <form style="margin-left:6%">
-            <h2 class="header" style="font-size:16px;font-weight:300;margin-top:3%;margin-left:0%;color:#2F5FD2"><span style="font-weight:400;">Withdraw to:</span>
-
-
-
-                <button data-toggle="tooltip" data-placement="right" title="The address below is where your current balance will be deposited. " type="button" class="btn btn-secondary" style="border:0;margin-top:-0.26%;border-radius:50%;background-color:#2F5FD2;color:white;font-size:11px;padding:0px;width:15px;height:15px"  >i</button> 1EahKdiXcSTjrW9joNFqBA6q3NZaDZiR2B</span></h2>
-
-
-
+                <input placeholder="Withdraw Amount (USD)" style="border:0;border-bottom:1px solid #2F5FD2;width:300px;height;50px;margin-top:8%;outline: none;" type="text">
             <br>
 
-                <input placeholder="USD" style="border:0;border-bottom:1px solid #2F5FD2;width:150px;height:39.5px;margin-top:2%;margin-left:0.5%;text-align:left;background-color:white;outline: none;" type="text"></input>
 
-          <a href="/signup.html" style="color:white">
-                <button class="header" style="border-width:0;border-radius:0px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:0;font-weight:300;width:90px;margin-left:-1.5%;height:40px;">
+            </form>
+    <a href="/signup.html" style="color:white">
+                <button class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:6%;clear:both;display:flex;justify-content:center;font-size:15px;margin-top:25px;">
                     <a href="/signup.html"><span  style="color:white">Withdraw</span></a>
                 </button>
                     </a>
@@ -92,11 +83,12 @@
         </div>
 
 
-        <div style="float:left;margin-left:6%;margin-top:6%;width:50%">
-            <h2 class="header" style="font-size:21px;font-weight:400;margin-top:2%;margin-left:0%">Balance</h2>
+        <div style="float:left;margin-left:15%;margin-top:6%;width:50%">
 
-            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:2%;margin-left:0%"><span style="font-weight:600;color:#2F5FD2">0.0002 BTC</span></h2>
-            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:0%"><span style="font-weight:600;color:#2F5FD2">1.63 USD</span></h2>
+            <h2 class="header" style="font-size:25px;font-weight:300;margin-top:3%;margin-left:6%"><span style="font-weight:600;color:#2F5FD2">0.0002 BTC</span></h2>
+            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:6%"><span style="font-weight:600;color:#2F5FD2">1.63 USD</span></h2>
+
+
         </div>
 
 
@@ -118,19 +110,19 @@
                 ⓒ Zapp Project
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
-                <a href="aboutus.html" style="color:#2F5FD2">About Us</a>
+                <a href="/aboutus" style="color:#2F5FD2">About Us</a>
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2" style="color:#2F5FD2">
-                <a href="contribute.html" style="color:#2F5FD2">Contribute</a>
+                <a href="/contribute" style="color:#2F5FD2">Contribute</a>
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
-                <a href="faq.html" style="color:#2F5FD2">FAQ</a>
+                <a href="/FAQ" style="color:#2F5FD2">FAQ</a>
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
-                <a href="terms.html" style="color:#2F5FD2">Terms of Service</a>
+                <a href="/terms" style="color:#2F5FD2">Terms of Service</a>
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2;margin-right:40px;">
-                <a href="Contact.html" style="color:#2F5FD2">Contact</a>
+                <a href="/contact" style="color:#2F5FD2">Contact</a>
             </li>
 
         </ul>
