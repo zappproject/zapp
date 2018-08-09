@@ -8,6 +8,9 @@
 .header{
     font-family: 'roboto','Open Sans', sans-serif;
 }
+.transhead{
+    font-weight:300;font-size:16px;font-weight:300;
+}
 body{
     margin: 0;
 }
@@ -52,3 +55,4 @@ body{
 .tooltip-red + .tooltip > .tooltip-inner {background-color: white;color:black;border:0;margin-top:-0.26%;border-radius:50%;background-color:#2F5FD2;color:white;font-size:11px;padding:0px;width:15px;height:15px}
 
 }
+

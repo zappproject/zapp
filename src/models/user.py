@@ -3,15 +3,17 @@ import uuid
 from flask import session
 from src.common.database import Database
 from src.models.blog import Blog
+from src.models.transaction import Transaction
 
 __author__ = 'jslvtr'
 
 
 class User(object):
-    def __init__(self, username, password, address, _id=None):
+    def __init__(self, username, password, address, balance, _id=None):
         self.username = username
         self.password = password
         self.address = address
+        self.balance = balance
         self._id = uuid.uuid4().hex if _id is None else _id
 
     @classmethod
@@ -36,11 +38,11 @@ class User(object):
         return False
 
     @classmethod
-    def register(cls, username, password, address):
+    def register(cls, username, password, address, balance):
         user = cls.get_by_username(username)
         if user is None:
             # User doesn't exist, so we can create it
-            new_user = cls(username, password, address)
+            new_user = cls(username, password, address, balance)
             new_user.save_to_mongo()
             session['username'] = username
             session['address'] = address
@@ -58,16 +60,19 @@ class User(object):
     def logout():
         session['username'] = None
 
+    def get_transactions(self, sender):
+        return Transaction.find_transactions(sender)
+
     def get_address(self):
         return Blog.find_by_author_id(self._id)
 
-    def new_blog(self, title, description):
-        blog = Blog(author=self.username,
-                    title=title,
-                    description=description,
-                    author_id=self._id)
-
-        blog.save_to_mongo()
+    def new_transaction(self, recipient, amount, message, sent_received):
+        transaction = Transaction(sender=self.username,
+                                  recipient=recipient,
+                                  amount=amount,
+                                  message=message,
+                                  sent_received=sent_received)
+        transaction.save_to_mongo()
 
     @staticmethod
     def new_post(blog_id, title, content, date=datetime.datetime.utcnow()):
@@ -81,8 +86,12 @@ class User(object):
             "username": self.username,
             "_id": self._id,
             "password": self.password,
-            "address": self.address
+            "address": self.address,
+            "balance": self.balance
         }
 
     def save_to_mongo(self):
         Database.insert("users", self.json())
+
+    def update_balance(self):
+        Database.update('users', {"username": self.username}, self.json())
