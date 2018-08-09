@@ -2,8 +2,7 @@ from flask import url_for
 from werkzeug.utils import redirect
 
 from src.common.database import Database
-from src.models.blog import Blog
-from src.models.post import Post
+
 from src.models.user import User
 
 __author__ = 'zapp'
@@ -27,11 +26,6 @@ def home_template():
 @app.route('/register')
 def register_template():
     return render_template('home.html')
-
-@app.route('/login')
-def login_template():
-    return render_template('login.html')
-
 
 
 @app.route('/contribute')

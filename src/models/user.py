@@ -2,7 +2,7 @@ import datetime
 import uuid
 from flask import session
 from src.common.database import Database
-from src.models.blog import Blog
+
 from src.models.transaction import Transaction
 
 __author__ = 'jslvtr'
