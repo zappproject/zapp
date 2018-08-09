@@ -1,5 +1,5 @@
 import os
-import pymongo
+from pymongo import MongoClient
 
 
 class Database(object):
@@ -8,7 +8,7 @@ class Database(object):
 
     @staticmethod
     def initialize():
-        client = pymongo.MongoClient(Database.URI)
+        client = MongoClient(Database.URI)
         Database.DATABASE = client.get_default_database()
 
     @staticmethod
