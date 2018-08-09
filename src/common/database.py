@@ -1,7 +1,4 @@
 import os
-
-__author__ = 'jslvtr'
-
 import pymongo
 
 
