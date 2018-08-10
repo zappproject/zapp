@@ -50,7 +50,7 @@
 
     <div style="width:20%;background-color:#eef2f3;height:100%;float:left;position:fixed">
         <div style="height:8%;background-color:white;">
-            <h1 class="header" href="/index.html" style="color:#2F5FD2;;font-weight:600;font-size:22px;text-align:left;padding-top:15px;padding-left:18px;">Zapp<sub style="font-size:12px">Beta</sub></h1>
+            <h1 class="header" href="/index.html" style="color:#2F5FD2;;font-weight:600;font-size:26px;text-align:left;padding-top:15px;padding-left:18px;">Zapp<sub style="font-size:12px">Beta</sub></h1>
         </div>
         <div style="height:92%">
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:20px;padding-left:17px;"><a href="/" style="color:black">Account</a></h2>
@@ -64,22 +64,36 @@
         </div>
     </div>
 
-<div style="width:80%;background-color:white;height:100%;float:left;margin-left:20%">
+
+<div style="width:80%;background-color:white;height:190%;float:left;margin-left:20%">
 
              <div style="float:left;margin-left:6%;margin-top:6%;">
-                <h2 class="header" style="font-size:26px;font-weight:600;margin-top:5%;margin-left:6%;color:#2F5FD2">Transactions</h2>
+                <h2 class="header" style="font-size:26px;font-weight:600;margin-top:9%;margin-left:9%;color:#2F5FD2">Transactions</h2>
 
-                <div class="container" style="margin-left:2%;margin-top:10%">
+                <div class="container" style="margin-left:4.8%;margin-top:10%">
                     {% for transaction in transactions %}
-                        <h3 class="header transhead">{{ transaction.amount }} USD</h3>
-                        <p class="header transhead">{{ transaction.message }}</p>
-                        <p class="header transhead">{{ transaction.sent_received }}</p>
-                        <hr>
+
+                            {% if transaction.sender == username and transaction.sent_received == 'Sent' %}
+                            <h3 class="header transamt">- {{ transaction.amount }} BTC</h3>
+                            <p class="header transsent"><span style="font-weight:bold">{{ transaction.sent_received }}</span> to {{ transaction.recipient }}</p>
+                            <p class="header transmes">{{ transaction.message }}</p>
+                            <hr>
+                            {% elif transaction.recipient == username and transaction.sent_received == 'Received' %}
+                            <h3 class="header transamt">+ {{ transaction.amount }} BTC</h3>
+                            <p class="header transsent"><span style="font-weight:bold">{{ transaction.sent_received }}</span> from {{ transaction.sender }}</p>
+                            <p class="header transmes">{{ transaction.message }}</p>
+                            <hr>
+                            {% else %}
+                            {% endif %}
+                            <!--<h3 class="header transamt">+ {{ us_value }} USD</h3>-->
+
                     {% endfor %}
                 </div>
              </div>
 
+
 </div>
+
 
     </div>
 

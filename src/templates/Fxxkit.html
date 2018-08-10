@@ -47,7 +47,12 @@
                     none;
                 }
             }
-
+            $(function() {
+                    $("#recipient").popover('show');
+                $("#recipient").on('click', function () {
+                    $('#recipient').popover('dispose');
+                });
+             });
 
 
     </script>
@@ -60,7 +65,7 @@
     <div style="width:20%;background-color:#eef2f3;height:100%;float:left">
         <div style="height:8%;background-color:white;">
             <h1 class="header" href="/index.html"
-                style="color:#2F5FD2;font-weight:600;font-size:26px;text-align:left;padding-top:15px;padding-left:18px;">
+                style="color:#2F5FD2;;font-weight:600;font-size:26px;text-align:left;padding-top:15px;padding-left:18px;">
                 Zapp<sub style="font-size:12px">Beta</sub></h1>
         </div>
         <div style="height:92%">
@@ -87,7 +92,9 @@
             <h2 class="header" style="font-size:26px;font-weight:600;margin-top:5%;margin-left:6%;color:#2F5FD2">Send
                 BTC</h2>
             <form style="margin-left:6%" action="/auth/transaction" method="post">
-                <input placeholder="Recipient Username" required="required" name="recipient" id="recipient"
+                <input rel="popover"
+                data-content="Remember, Usernames are case sensitive. Check spelling and Capitalisation. Perhaps you tried to send to yourself?"
+                data-original-title="The User does not exist" placeholder="Recipient Username" required="required" name="recipient" id="recipient"
                        style="border:0;border-bottom:1px solid #2F5FD2;width:300px;height;50px;margin-top:8%;outline: none;"
                        type="text">
                 <br>
@@ -112,7 +119,7 @@
             <h2 class="header" style="font-size:25px;font-weight:300;margin-top:3%;margin-left:6%"><span
                     style="font-weight:600;color:#2F5FD2">{{ balance }} BTC</span></h2>
             <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:6%"><span
-                    style="font-weight:600;color:#2F5FD2">{{ balance_usd }} USD</span></h2>
+                    style="font-weight:600;color:#2F5FD2">1.63 USD</span></h2>
 
 
         </div>
@@ -135,7 +142,7 @@
                 <a href="/aboutus" style="color:#2F5FD2">About Us</a>
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2"
-                style="color:#2F5FD2">
+                >
                 <a href="/contribute" style="color:#2F5FD2">Contribute</a>
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">

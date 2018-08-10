@@ -5,10 +5,19 @@
 .page-form {
     max-width: 480px;
 }
+a:hover{
+    text-decoration: none;
+}
 .header{
     font-family: 'roboto','Open Sans', sans-serif;
 }
-.transhead{
+.transamt{
+    font-weight:300;font-size:17px;font-weight:400;
+}
+.transmes{
+    font-weight:300;font-size:16px;font-weight:300;
+}
+.transsent{
     font-weight:300;font-size:16px;font-weight:300;
 }
 body{

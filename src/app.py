@@ -1,6 +1,7 @@
+import datetime
 from flask import url_for
 from werkzeug.utils import redirect
-
+import requests
 from src.common.database import Database
 
 from src.models.user import User
@@ -14,12 +15,16 @@ app = Flask(__name__)
 app.config.from_object('src.config')
 app.secret_key = "Zapp"
 
+r = requests.get('https://blockchain.info/ticker')
+usd_price = r.json()['USD']['last']
+
 
 @app.route('/')
 def home_template():
     try:
         user = User.get_by_username(session['username'])
-        return render_template("profile.html", username=user.username, address=user.address, balance=user.balance)
+        return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 6),
+                               balance_usd=round(user.balance*usd_price, 3))
     except:
         return render_template('home.html')
 
@@ -47,12 +52,21 @@ def contact():
 @app.route('/send')
 def send():
     user = User.get_by_username(session['username'])
-    return render_template('send.html', username=user.username, address=user.address, balance=user.balance)
+    return render_template('send.html', username=user.username, address=user.address, balance=round(user.balance, 6),
+                           balance_usd=round(user.balance*usd_price, 3))
+
+@app.route('/retry')
+def retry():
+    user = User.get_by_username(session['username'])
+    return render_template('Fxxkit.html', username=user.username, address=user.address, balance=round(user.balance, 6),
+                           balance_usd=round(user.balance*usd_price, 3)
+                           )
 
 @app.route('/withdraw')
 def withdraw():
     user = User.get_by_username(session['username'])
-    return render_template('withdraw.html', username=user.username, address=user.address, balance=user.balance)
+    return render_template('withdraw.html', username=user.username, address=user.address, balance=round(user.balance, 6),
+                           balance_usd=round(user.balance*usd_price, 3))
 
 
 
@@ -76,26 +90,27 @@ def login_user():
     else:
         session['username'] = None
         return render_template("home.html", username=session['username'])
-    return render_template("profile.html", username=session['username'], address=user.address, balance=user.balance)
+    return redirect(url_for('home_template'))
+
 
 @app.route('/auth/transaction', methods=['POST'])
 def send_transaction():
     recipient = request.form['recipient']
     message = request.form['message']
     amount = request.form['amount']
-    amount = float(amount)
-
+    amount = float(amount)/usd_price
     user = User.get_by_username(session['username'])
     rec = User.get_by_username(recipient)
-
-    user.balance = round(float(user.balance) - amount, 2)
-    rec.balance = round(float(rec.balance) + amount, 2)
-
-    user.new_transaction(recipient, amount, message, 'sent')
-    rec.new_transaction(recipient, amount, message, 'received')
-    rec.update_balance()
-    user.update_balance()
-    return redirect(url_for('home_template'))
+    if rec is not None and user.balance >= amount and recipient != user.username:
+        user.balance = user.balance - amount
+        rec.balance = rec.balance + amount
+        user.new_transaction(user.username, recipient, amount, message, 'Sent')
+        rec.new_transaction(user.username, recipient, amount, message, 'Received')
+        rec.update_balance()
+        user.update_balance()
+        return redirect(url_for('home_template'))
+    else:
+        return redirect(url_for('retry'))
 
 
 @app.route('/auth/register', methods=['POST'])
@@ -103,15 +118,17 @@ def register_user():
     username = request.form['username']
     password = request.form['password']
     address = request.form['address']
-    User.register(username, password, address, 5)
+    User.register(username, password, address, 0.005)
     user = User.get_by_username(session['username'])
-    return render_template("profile.html", username=user.username, address=user.address, balance=user.balance)
+    return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 6),
+                           balance_usd=round(user.balance*usd_price, 3))
+
 
 @app.route('/transactions')
-def user_blogs():
+def user_transactions():
     user = User.get_by_username(session['username'])
-    transactions = user.get_transactions(user.username)
-    return render_template("transactions.html", transactions=transactions)
+    transaction = user.get_transactions()
+    return render_template("transactions.html", transactions=transaction, username=user.username,)
 
 
 

@@ -2,7 +2,6 @@ import datetime
 import uuid
 from flask import session
 from src.common.database import Database
-
 from src.models.transaction import Transaction
 
 __author__ = 'jslvtr'
@@ -60,26 +59,17 @@ class User(object):
     def logout():
         session['username'] = None
 
-    def get_transactions(self, sender):
-        return Transaction.find_transactions(sender)
+    def get_transactions(self):
+        return Transaction.find_transactions()
 
-    def get_address(self):
-        return Blog.find_by_author_id(self._id)
-
-    def new_transaction(self, recipient, amount, message, sent_received):
-        transaction = Transaction(sender=self.username,
+    def new_transaction(self, sender, recipient, amount, message, sent_received):
+        transaction = Transaction(sender=sender,
                                   recipient=recipient,
                                   amount=amount,
                                   message=message,
                                   sent_received=sent_received)
         transaction.save_to_mongo()
 
-    @staticmethod
-    def new_post(blog_id, title, content, date=datetime.datetime.utcnow()):
-        blog = Blog.from_mongo(blog_id)
-        blog.new_post(title=title,
-                      content=content,
-                      date=date)
 
     def json(self):
         return {
@@ -87,7 +77,8 @@ class User(object):
             "_id": self._id,
             "password": self.password,
             "address": self.address,
-            "balance": self.balance
+            "balance": self.balance,
+
         }
 
     def save_to_mongo(self):

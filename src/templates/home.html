@@ -132,9 +132,9 @@
                     Ask Us Anything
                 </button>-->
                 <form action="/auth/register" method="post">
-                <input type="text" name="username" id="username" placeholder="New Zapp Username eg. myaddress" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:0px"><br>
-                <input type="text" name="address" id="address" placeholder="Current Bitcoin Address" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:10px"><br>
-                    <input type="text" name="password" id="password" placeholder="Password" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:10px"><br>
+                <input type="text" required="required" title="Must contain at least 6 or more characters. Also remember your username is case sensitive" name="username" id="username" pattern=".{6,}" placeholder="New Zapp Username eg. bobby123" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:0px"><br>
+                <input type="text"  required="required" title="Please enter a proper BTC address. Without the correct address, your funds may be misplaced." name="address" id="address" pattern=".{34}" placeholder="Current Bitcoin Address" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:10px"><br>
+                    <input  required="required" type="text" title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"  id="password" placeholder="Password" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:10px"><br>
                 <button class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:17px;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:200px;margin-left:0px;margin-top:15px" type="submit">
                     <span  style="color:white;">Get Started</span>
                 </button>
@@ -235,9 +235,9 @@
         <h2 class="header" style="text-align:left;font-size:25px;color:black;FONT-WEIGHT:400;text-align:center;padding-top:78px">Send Bitcoin with only a Username.</h2>
         <p style="text-align:center;line-height:1.6;font-size:15px;color:black;font-weight:300;padding-top:2%;clear:both;width:38%;margin:auto;" class="header">Mass adoption depends on ease of use. The Zapp platform addresses this concern by allowing for instant transactions using human usernames, making <b>sending bitcoin easier than an username</b>. Your desktop or hardware wallet serves as your personal <b>"Bank"</b>, whilst everyday transactions are made on the Zapp platform for convenience. <b>The easiest way to harness the power of Bitcoin.</b></p>
         <div>
-            <a href="/aboutus.html" style="color:white">
+            <a href="/aboutus" style="text-decoration:none;" >
         <button class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:0px;clear:both;display:flex;justify-content:center;font-size:15px;margin:0 auto;margin-top:30px;">
-                    <a href="/aboutus.html"><span style="color:white">Learn More</span></a>
+                    <span style="color:white">Learn More</span>
                 </button>
                 </a>
         </div>
@@ -285,12 +285,12 @@
     <div style="background-color:#fafafa;width:60%;float:left;height:100%">
 
         <div style="float:left;margin-left:12%">
-        <h2 class="header" class="header" style="text-align:center;font-size:25px;color:black;FONT-WEIGHT:400;float:left;padding-top:140px">Using <span style="color:#2F5FD2;font-family:roboto;FONT-WEIGHT:600">Zapp</span></h2>
+        <h2 class="header" style="text-align:center;font-size:25px;color:black;FONT-WEIGHT:400;float:left;padding-top:140px">Using <span style="color:#2F5FD2;font-family:roboto;FONT-WEIGHT:600">Zapp</span></h2>
         <hr style="background-color:#194084;width:60px;float:left;height:2px;clear:both">
         <p style="text-align:left;line-height:1.6;font-size:15px;color:black;font-weight:300;padding-top:2%;clear:both;width:50%;margin:auto;float:left" class="header">Easiest way to transfer money online using Bitcoin in just 4 steps.</p>
-            <a href="/aboutus.html#sectionhowto">
+            <a href="/aboutus#sectionhowto" style="text-decoration : none">
             <button class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:200px;margin-left:0px;clear:both;float:left;margin-top:25px">
-               <a href="/aboutus.html#sectionhowto"><span style="color:white">How To Use     </span></a>
+               <span style="color:white">How To Use     </span>
                 </button>
                 </a>
         </div>
@@ -323,9 +323,9 @@
                 <p class="header" style="text-align:left;line-height:1.6;font-size:15px;color:black;font-weight:300;margin-top:3%;clear:both;width:70%"><span style="font-weight:600;">Integration of Lightning Network</span></b></p>
                 <p class="header" style="text-align:left;line-height:1.6;font-size:15px;color:black;font-weight:300;margin-top:3%;clear:both;width:70%"><span style="font-weight:600;">Allowing for Btc purchase through frictionless means, Ie. Venmo</span></b>
                 </p>
-<a href="/contribute">
+<a href="/contribute" style="text-decoration : none">
 <button class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:120px;margin-left:0px;clear:both;display:flex;justify-content:center;font-size:15px;margin-top:22px;">
-    <a href="/contribute"><span style="color:white">Help</span></a>
+    <span style="color:white">Help Us</span>
                 </button>
     </a>
             </div>

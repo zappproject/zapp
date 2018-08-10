@@ -1,5 +1,7 @@
 import uuid
 import datetime
+import pymongo
+
 from src.common.database import Database
 
 __author__ = 'jslvtr'
@@ -12,6 +14,7 @@ class Transaction(object):
         self.amount = amount
         self.message = message
         self.sent_received = sent_received
+        #self.date_received = date
         self._id = uuid.uuid4().hex if _id is None else _id
 
     def save_to_mongo(self):
@@ -25,6 +28,7 @@ class Transaction(object):
             'amount': self.amount,
             'message': self.message,
             'sent_received': self.sent_received,
+            #'date_received': self.date_received,
             '_id': self._id
         }
 
@@ -34,12 +38,7 @@ class Transaction(object):
                                              query={'_id': id})
         return cls(**transaction_data)
 
-    @classmethod
-    def find_by_sender(cls, sender):
-        transactions = Database.find(collection='blogs',
-                                     query={'sender': sender})
-        return [cls(**transaction) for transaction in transactions]
 
     @classmethod
-    def find_transactions(cls, sender):
-        return [cls(**transaction) for transaction in Database.find('transactions', {"sender": sender})]
+    def find_transactions(cls):
+        return [cls(**transaction) for transaction in Database.find('transactions', {})]
