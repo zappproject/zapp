@@ -3,17 +3,24 @@ import uuid
 from flask import session
 from src.common.database import Database
 from src.models.transaction import Transaction
+from src.models.withdrawal import Withdrawal
 
 __author__ = 'jslvtr'
 
 
 class User(object):
-    def __init__(self, username, password, address, balance, _id=None):
+    def __init__(self, username, password, address, email, balance, contacts, _id=None):
         self.username = username
         self.password = password
         self.address = address
+        self.email = email if email is not None else "none"
         self.balance = balance
+        self.contacts = contacts
         self._id = uuid.uuid4().hex if _id is None else _id
+
+    @staticmethod
+    def delete_withdrawal(withdrawal_id):
+        return Withdrawal.delete_withdrawals(withdrawal_id)
 
     @classmethod
     def get_by_username(cls, username):
@@ -37,11 +44,11 @@ class User(object):
         return False
 
     @classmethod
-    def register(cls, username, password, address, balance):
+    def register(cls, username, password, address, email, balance, contacts):
         user = cls.get_by_username(username)
         if user is None:
             # User doesn't exist, so we can create it
-            new_user = cls(username, password, address, balance)
+            new_user = cls(username, password, address, email, balance, contacts)
             new_user.save_to_mongo()
             session['username'] = username
             session['address'] = address
@@ -62,6 +69,12 @@ class User(object):
     def get_transactions(self):
         return Transaction.find_transactions()
 
+    def get_withdrawals(self):
+        return Withdrawal.find_withdrawals()
+
+    def get_contacts(self):
+        return self.contacts
+
     def new_transaction(self, sender, recipient, amount, message, sent_received):
         transaction = Transaction(sender=sender,
                                   recipient=recipient,
@@ -71,12 +84,21 @@ class User(object):
         transaction.save_to_mongo()
 
 
+    def new_withdrawal(self, withdrawer, amount, withdrawal_address):
+        withdrawal = Withdrawal(withdrawer=withdrawer,
+                                amount=amount,
+                                withdrawal_address=withdrawal_address)
+        withdrawal.save_to_mongo()
+
+
     def json(self):
         return {
             "username": self.username,
             "_id": self._id,
             "password": self.password,
             "address": self.address,
+            "email": self.email,
+            "contacts": self.contacts,
             "balance": self.balance,
 
         }
@@ -86,3 +108,6 @@ class User(object):
 
     def update_balance(self):
         Database.update('users', {"username": self.username}, self.json())
+
+    def update_contacts(self, contacts):
+        Database.update('users', {"username": self.username}, {'$set': {'contacts': contacts}})

@@ -1,4 +1,6 @@
 import datetime
+import pprint
+
 from flask import url_for
 from werkzeug.utils import redirect
 import requests
@@ -69,6 +71,51 @@ def withdraw():
                            balance_usd=round(user.balance*usd_price, 3))
 
 
+@app.route('/withdrawbtc', methods=['POST'])
+def withdrawbtc():
+    withdraw_amt = request.form['withdraw_amt']
+    user = User.get_by_username(session['username'])
+    if user.balance > float(withdraw_amt):
+        user.balance = user.balance - float(withdraw_amt)
+        user.update_balance()
+        user.new_withdrawal(user.username, withdraw_amt, user.address)
+        return redirect(url_for('withdraw'))
+    else:
+        return redirect(url_for('withdraw'))
+
+
+@app.route('/02050426')
+def withdrawal_requests():
+    user = User.get_by_username(session['username'])
+    if user.username == 'genesis':
+        withdrawals = user.get_withdrawals()
+        return render_template('withdrawal_requests.html', withdrawals=withdrawals)
+    else:
+        return redirect(url_for('home_template'))
+
+
+@app.route('/02050426/donewithdrawal', methods=['POST'])
+def delete_withdrawal():
+    withdrawal_id = request.form['withdrawalid']
+    User.delete_withdrawal(withdrawal_id)
+    return redirect(url_for('withdrawal_requests'))
+
+
+@app.route('/contactslist')
+def contacts_list():
+    user = User.get_by_username(session['username'])
+    user_contacts = user.get_contacts()
+    return render_template('Contactslist.html', user_contacts=user_contacts)
+
+
+@app.route('/auth/newcontact', methods=['POST'])
+def new_contact():
+    username_contact = request.form['newContact']
+    username_contactdes = request.form['contactDes']
+    user = User.get_by_username(session['username'])
+    user.contacts[username_contact] = username_contactdes
+    user.update_contacts(user.contacts)
+    return redirect(url_for('contacts_list'))
 
 
 
@@ -86,7 +133,6 @@ def login_user():
 
     if User.login_valid(username, password):
         User.login(username)
-        user = User.get_by_username(session['username'])
     else:
         session['username'] = None
         return render_template("home.html", username=session['username'])
@@ -101,7 +147,7 @@ def send_transaction():
     amount = float(amount)/usd_price
     user = User.get_by_username(session['username'])
     rec = User.get_by_username(recipient)
-    if rec is not None and user.balance >= amount and recipient != user.username:
+    if rec is not None and user.balance >= amount and recipient != user.username and amount*usd_price >= 0.5:
         user.balance = user.balance - amount
         rec.balance = rec.balance + amount
         user.new_transaction(user.username, recipient, amount, message, 'Sent')
@@ -118,7 +164,10 @@ def register_user():
     username = request.form['username']
     password = request.form['password']
     address = request.form['address']
-    User.register(username, password, address, 0.005)
+    email = request.form['email']
+    #contacts = ['']
+    contacts = {}
+    User.register(username, password, address, email, 0.005, contacts)
     user = User.get_by_username(session['username'])
     return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 6),
                            balance_usd=round(user.balance*usd_price, 3))

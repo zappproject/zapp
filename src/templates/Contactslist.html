@@ -1,3 +1,4 @@
+
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -47,7 +48,7 @@
 
 <div style="width:100%;margin:0 auto;">
 
-    <div style="width:20%;background-color:#eef2f3;height:100%;float:left">
+    <div style="width:20%;background-color:#eef2f3;height:100%;float:left;position:fixed">
         <div style="height:8%;background-color:white;">
             <h1 class="header" href="/index.html" style="color:#2F5FD2;;font-weight:600;font-size:26px;text-align:left;padding-top:15px;padding-left:18px;">Zapp<sub style="font-size:12px">Beta</sub></h1>
         </div>
@@ -55,49 +56,52 @@
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:20px;padding-left:17px;"><a href="/" style="color:black">Account</a></h2>
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="/send" style="color:black">Send</a></h2>
             <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="/transactions" style="color:black">Transactions</a></h2>
-            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="/contactslist" style="color:black">Contacts</a></h2>
+                        <h2 style="color:black;font-weight:400;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><b>Contacts</b></h2>
 
-            <h2 style="color:black;font-weight:400;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><b>Withdraw</b></h2>
+            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;"><a href="/withdraw" style="color:black">Withdraw</a></h2>
 
 
         </div>
     </div>
 
 
-         <div style="width:80%;background-color:white;height:100%;float:left">
+<div style="width:80%;background-color:white;height:190%;float:left;margin-left:20%">
 
              <div style="float:left;margin-left:6%;margin-top:6%;">
-           <h2 class="header" style="font-size:26px;font-weight:600;margin-top:5%;margin-left:6%;color:#2F5FD2">Withdraw BTC</h2>
+                <h2 class="header" style="font-size:26px;font-weight:600;margin-top:2.5%;margin-left:3%;color:#2F5FD2">
+                    Contacts</h2>
+                 <form style="margin-left:3%;margin-top:-4%" action="/auth/newcontact" method="post">
+                    <input placeholder="New Contact" required="required" name="newContact" id="newContact"
+                           style="border:0;border-bottom:1px solid #2F5FD2;width:300px;height;50px;margin-top:8%;outline: none;"
+                           type="text">
+                     <input placeholder="Contact Description" required="required" name="contactDes" id="contactDes"
+                           style="border:0;border-bottom:1px solid #2F5FD2;width:300px;height;50px;margin-top:8%;outline: none;"
+                           type="text">
+                    <button type="submit" class="header"
+                            style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;clear:both;display:flex;justify-content:center;font-size:15px;margin-top:25px;">
+                        <span style="color:white">Add Contact</span>
+                    </button>
+                </form>
 
-            <form style="margin-left:6%" method="post" action="/withdrawbtc">
-                <input placeholder="Withdraw Amount (BTC)" style="border:0;border-bottom:1px solid #2F5FD2;width:300px;height;50px;margin-top:8%;outline: none;" type="text" id="withdraw_amt" name="withdraw_amt">
-            <br>
-            <a style="color:white">
-                <button type="submit" class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:0%;clear:both;display:flex;justify-content:center;font-size:15px;margin-top:25px;">
-                 <span  style="color:white">Withdraw</span>
-                </button>
-                    </a>
+                <div class="container" style="margin-left:1%;margin-top:6%">
+                    {% for contact in user_contacts %}
+                        {% if contact is not none %}
+                    <p class="header transamt">{{ contact }}</p>
+                    <p class="header transsent">{{ user_contacts[contact] }}</p>
+                        <hr>
+                        {% else %}
+                        <h3 class="header transamt">No Contacts</h3>
 
-            </form>
+                        {% endif %}
 
-
-        </div>
-
-
-        <div style="float:left;margin-left:15%;margin-top:6%;width:50%">
-
-            <h2 class="header" style="font-size:25px;font-weight:300;margin-top:3%;margin-left:6%"><span style="font-weight:600;color:#2F5FD2">{{ balance }} BTC</span></h2>
-            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:6%"><span style="font-weight:600;color:#2F5FD2">{{ balance_usd }} USD</span></h2>
+                    {% endfor %}
+                </div>
+             </div>
 
 
-        </div>
+</div>
 
 
-
-
-
-
-        </div>
     </div>
 
      <footer style="position: fixed; bottom: 0;
@@ -108,7 +112,7 @@
         <div style="text-align:center">
         <ul style="font-weight:400;font-size:13px;list-style-type:none;display:inline;" class="header">
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;font-weight:400;font-size:15px;color:#2F5FD2;">
-                ⓒ Zapp Project
+                ⓒ Genesis One
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
                 <a href="/aboutus" style="color:#2F5FD2">About Us</a>

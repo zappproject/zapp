@@ -121,12 +121,12 @@
                    })
             </script>
         </div>
-     <div class="mainhead" style="width:100%;height:75%;background-color:white;z-index:100;">
-        <div style="width:100%;margin-top:9%;position:absolute;margin-left:0%;">
+     <div class="mainhead" style="width:100%;height:78%;background-color:white;z-index:100;">
+        <div style="width:100%;margin-top:7%;position:absolute;margin-left:0%;">
             <div style="margin-left:10%;display:inline-block;z-index:2;float:left">
                 <h1 class="header" style="text-align:left;font-size:30px;color:black;FONT-WEIGHT:400;">Bitcoin Payments Simplified.</h1>
                 <hr style="background-color:#194084;width:60px;float:left;height:2px">
-                <p class="header" style="text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;margin-top:3%;clear:both"><span style="color:#2F5FD2;font-weight:600;font-size:17px">Zapp</span>, the simplest Bitcoin payments application, utilizing<br> human readable usernames for frictionless P2P transactions.<br><span style="font-weight:500">No username, No Credit Cards, No Fee's.</span></p>
+                <p class="header" style="text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;margin-top:3%;clear:both"><span style="color:#2F5FD2;font-weight:600;font-size:17px">Zapp</span>, the simplest Bitcoin payments application, utilizing<br> human readable usernames for frictionless P2P transactions.<br><span style="font-weight:500">No ID, No Credit Cards, No Fee's.</span></p>
                 <p style="font-size:10px;color:#989898;margin-top:-5px">by clicking Get Started, I agree to the <b><span style="color:grey;">Terms of Service</span></b> and have read <b><span style="color:grey;"><u>More Info</u></span></b>. </p>
                 <!--<button class="header" style="border-width:0;border-radius:50px;border:2px solid #194084;color:#194084;background-color:clear;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:400;width:240px">
                     Ask Us Anything
@@ -134,7 +134,8 @@
                 <form action="/auth/register" method="post">
                 <input type="text" required="required" title="Must contain at least 6 or more characters. Also remember your username is case sensitive" name="username" id="username" pattern=".{6,}" placeholder="New Zapp Username eg. bobby123" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:0px"><br>
                 <input type="text"  required="required" title="Please enter a proper BTC address. Without the correct address, your funds may be misplaced." name="address" id="address" pattern=".{34}" placeholder="Current Bitcoin Address" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:10px"><br>
-                    <input  required="required" type="text" title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"  id="password" placeholder="Password" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:10px"><br>
+                    <input  required="required" type="password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 7 or more characters" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"  id="password" placeholder="Password" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:10px"><br>
+                    <input  type="text" title="" name="email" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}"  id="email" placeholder="Email optional. Needed for Password Reset" style="width:400px;text-align:center;border:1px solid #eef2f3;border-radius:6px;height:40px;background:#eef2f3;font-size:15px;margin-top:10px"><br>
                 <button class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:17px;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:200px;margin-left:0px;margin-top:15px" type="submit">
                     <span  style="color:white;">Get Started</span>
                 </button>
@@ -142,7 +143,7 @@
 
 
             </div>
-            <div style="float:right;clear:both;margin-top:2%;margin-left:50%;position:absolute">
+            <div style="float:right;clear:both;margin-top:4.5%;margin-left:50%;position:absolute">
                 <img src="/static/product.png" style="height:250px">
             </div>
 
@@ -297,7 +298,7 @@
 
 
         <div style="width:50%;float:left;clear:both;margin-top:-27.3%;margin-left:45%">
-        <p class="header" style="text-align:left;line-height:1.6;font-size:15px;color:black;font-weight:300;margin-top:2%;clear:both;width:75%"><span style="font-weight:600;">Step 1</span>: Make an Account. <b>No username required,</b> Just a creative, available username. </p>
+        <p class="header" style="text-align:left;line-height:1.6;font-size:15px;color:black;font-weight:300;margin-top:2%;clear:both;width:75%"><span style="font-weight:600;">Step 1</span>: Make an Account. <b>No email required,</b> Just a creative, available username. </p>
                 <p class="header" style="text-align:left;line-height:1.6;font-size:15px;color:black;font-weight:300;margin-top:5%;clear:both;width:75%"><span style="font-weight:600;">Step 2</span>: <b>Deposit BTC</b> from your current wallet into the Zapp Account. Current deposits for the beta are topped at 10usd for security purposes.</p>
                 <p class="header" style="text-align:left;line-height:1.6;font-size:15px;color:black;font-weight:300;margin-top:5%;clear:both;width:75%"><span style="font-weight:600;">Step 3:</span> Send BTC to whoever you want for <b>free using just their username. Attach a message to each transaction too.</b></p>
                 <p class="header" style="text-align:left;line-height:1.6;font-size:15px;color:black;font-weight:300;margin-top:5%;clear:both;width:75%"><span style="font-weight:600;">Step 4:</span> Whenever you please, btc is automatically withdrawn to your wallet <b>instantly, for no fee's.</b></b>
@@ -350,7 +351,7 @@
         <div style="text-align:center">
         <ul style="font-weight:400;font-size:13px;list-style-type:none;display:inline;" class="header">
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;font-weight:400;font-size:15px;color:#2F5FD2;">
-                ⓒ Zapp Project
+                ⓒ Genesis One
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
                 <a href="/aboutus" style="color:#2F5FD2">About Us</a>

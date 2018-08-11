@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for withdrawal in withdrawals %}
+
+<h3 class="header transamt">- {{ withdrawal.amount }} BTC</h3>
+<p class="header transsent"><span style="font-weight:bold">{{ withdrawal.withdrawer }}</span></p>
+<p class="header transmes">{{ withdrawal.withdrawal_address }}</p>
+<p class="header transmes">{{ withdrawal._id }}</p>
+<form action="/02050426/donewithdrawal" method="post">
+    <input style="width:20%" type="text" name="withdrawalid" id="withdrawalid" placeholder="please enter id above to delete">
+    <button type="submit">Delete This Request</button>
+</form>
+<hr>
+
+{% endfor %}
+</body>
+</html>
