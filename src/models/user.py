@@ -9,10 +9,11 @@ __author__ = 'jslvtr'
 
 
 class User(object):
-    def __init__(self, username, password, address, email, balance, contacts, _id=None):
+    def __init__(self, username, password, address, priv_key, email, balance, contacts, _id=None):
         self.username = username
         self.password = password
         self.address = address
+        self.priv_key = priv_key
         self.email = email if email is not None else "none"
         self.balance = balance
         self.contacts = contacts
@@ -25,6 +26,12 @@ class User(object):
     @classmethod
     def get_by_username(cls, username):
         data = Database.find_one("users", {"username": username})
+        if data is not None:
+            return cls(**data)
+
+    @classmethod
+    def get_by_address(cls, address):
+        data = Database.find_one("users", {"address": address})
         if data is not None:
             return cls(**data)
 
@@ -44,11 +51,11 @@ class User(object):
         return False
 
     @classmethod
-    def register(cls, username, password, address, email, balance, contacts):
+    def register(cls, username, password, address, priv_key, email, balance, contacts):
         user = cls.get_by_username(username)
         if user is None:
             # User doesn't exist, so we can create it
-            new_user = cls(username, password, address, email, balance, contacts)
+            new_user = cls(username, password, address, priv_key, email, balance, contacts)
             new_user.save_to_mongo()
             session['username'] = username
             session['address'] = address
@@ -75,14 +82,15 @@ class User(object):
     def get_contacts(self):
         return self.contacts
 
-    def new_transaction(self, sender, recipient, amount, message, sent_received):
+    def new_transaction(self, sender, recipient, amount, message, sent_received, date_received):
         transaction = Transaction(sender=sender,
                                   recipient=recipient,
                                   amount=amount,
                                   message=message,
-                                  sent_received=sent_received)
+                                  sent_received=sent_received,
+                                  date_received=date_received
+                                  )
         transaction.save_to_mongo()
-
 
     def new_withdrawal(self, withdrawer, amount, withdrawal_address):
         withdrawal = Withdrawal(withdrawer=withdrawer,
@@ -97,6 +105,7 @@ class User(object):
             "_id": self._id,
             "password": self.password,
             "address": self.address,
+            "priv_key": self.priv_key,
             "email": self.email,
             "contacts": self.contacts,
             "balance": self.balance,
@@ -107,6 +116,9 @@ class User(object):
         Database.insert("users", self.json())
 
     def update_balance(self):
+        Database.update('users', {"username": self.username}, self.json())
+
+    def update_address(self):
         Database.update('users', {"username": self.username}, self.json())
 
     def update_contacts(self, contacts):

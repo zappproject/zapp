@@ -1,11 +1,13 @@
 import datetime
 import pprint
-
+import datetime
+from cryptos import *
 from flask import url_for
 from werkzeug.utils import redirect
 import requests
 from src.common.database import Database
-
+from bitcoin import serialize
+from blockcypher import *
 from src.models.user import User
 
 __author__ = 'zapp'
@@ -19,16 +21,69 @@ app.secret_key = "Zapp"
 
 r = requests.get('https://blockchain.info/ticker')
 usd_price = r.json()['USD']['last']
+c = Bitcoin()
 
+
+@app.before_first_request
+def initialize_database():
+    Database.initialize()
 
 @app.route('/')
 def home_template():
     try:
         user = User.get_by_username(session['username'])
-        return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 6),
-                               balance_usd=round(user.balance*usd_price, 3))
+        my_address = user.address
+        fuckthis = 'https://api.qrserver.com/v1/create-qr-code/?data={}&amp;size=100x100'.format(my_address)
+        priv = user.priv_key
+        roblox = requests.get('https://api.blockcypher.com/v1/btc/main/addrs/{}/balance'.format(my_address))
+        fee = requests.get('http://api.blockcypher.com/v1/btc/main')
+        fee_calculated = int(0.233 * fee.json()['medium_fee_per_kb'])
+        deposited_finaleis = roblox.json()['final_balance']
+        depo_finale = roblox.json()['balance']
+        if depo_finale == 0:
+            return render_template("profile.html", username=user.username, address=user.address,
+                                   balance=round(user.balance, 6), balance_usd=round(user.balance * usd_price, 3),
+                                   dep_address=my_address, fuckthis=fuckthis)
+        else:
+            if deposited_finaleis == 0:
+                return render_template("profile.html", username=user.username, address=user.address,
+                                   balance=round(user.balance, 6), balance_usd=round(user.balance * usd_price, 3),
+                                   dep_address=my_address, fuckthis=fuckthis)
+
+            else:
+                inputs = c.unspent(my_address)
+                outs = [{'value': (depo_finale-fee_calculated), 'address': '14ZDEfZheM4EihiNybUuZNifdMF3KfKsk6'}]
+                tx = c.mktx(inputs, outs)
+                print(tx)
+                tx2 = c.sign(tx,0,priv)
+                tx4 = serialize(tx)
+                user.balance = user.balance + float(depo_finale / 100000000)
+                user.update_balance()
+                pushtx(tx_hex=tx4, api_key="9ffd0ea5da8c450bb05c918c3e536b70")
+
+                '''inputs = [{'address': my_address}, ]
+                outputs = [{'address': '14ZDEfZheM4EihiNybUuZNifdMF3KfKsk6', 'value': depo_finale}]
+                unsigned_tx = create_unsigned_tx(inputs=inputs, outputs=outputs, coin_symbol='btc',
+                                                 api_key="9ffd0ea5da8c450bb05c918c3e536b70")
+                print(unsigned_tx)
+                bob = privtopub(priv)
+                privkey_list = [priv]
+                pubkey_list = [bob]
+                tx_signatures = make_tx_signatures(txs_to_sign=unsigned_tx['tosign'], privkey_list=privkey_list,
+                                                   pubkey_list=pubkey_list)
+                print(tx_signatures)
+                broadcast_signed_transaction(unsigned_tx=unsigned_tx, signatures=tx_signatures, pubkeys=pubkey_list,
+                                             api_key="9ffd0ea5da8c450bb05c918c3e536b70")'''
+                my_new_private_key = random_key()
+                my_new_public_key = privtopub(my_new_private_key)
+                my_new_address = pubtoaddr(my_new_public_key)
+                user.priv_key = my_new_private_key
+                user.address = my_new_address
+                user.update_address()
+                return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 6), balance_usd=round(user.balance * usd_price, 3), dep_address=user.address, fuckthis=fuckthis)
+
     except:
-        return render_template('home.html')
+        return redirect(url_for('register_template'))
 
 @app.route('/register')
 def register_template():
@@ -74,11 +129,26 @@ def withdraw():
 @app.route('/withdrawbtc', methods=['POST'])
 def withdrawbtc():
     withdraw_amt = request.form['withdraw_amt']
+    #withdrawal_send_amt = int(float(withdraw_amt)*100000000)
     user = User.get_by_username(session['username'])
-    if user.balance > float(withdraw_amt):
+    withdraw_addr = request.form['withdraw_addr']
+    if user.balance >= float(withdraw_amt):
+        '''inputs = [{'address': '14ZDEfZheM4EihiNybUuZNifdMF3KfKsk6'}, ]
+        outputs = [{'address': withdraw_addr, 'value': withdrawal_send_amt}]
+        print(outputs)
+        unsigned_tx = create_unsigned_tx(inputs=inputs, outputs=outputs, coin_symbol='btc',
+                                         api_key="9ffd0ea5da8c450bb05c918c3e536b70")
+        print(unsigned_tx)
+        privkey_list = ['L4A4Xai8de7XnaLe7d5LE6DqzeQtJtu4QnbHfogURxs1FfinGCwf']
+        pubkey_list = ['02224394030e706a1f2ccdb35ec1fe1d1f1bcb685ea67ae503f729e5463c63395a']
+        tx_signatures = make_tx_signatures(txs_to_sign=unsigned_tx['tosign'], privkey_list=privkey_list,
+                                           pubkey_list=pubkey_list)
+        print(tx_signatures)
+        broadcast_signed_transaction(unsigned_tx=unsigned_tx, signatures=tx_signatures, pubkeys=pubkey_list,
+                                     api_key="9ffd0ea5da8c450bb05c918c3e536b70")'''
+        user.new_withdrawal(user.username, withdraw_amt, withdraw_addr)
         user.balance = user.balance - float(withdraw_amt)
         user.update_balance()
-        user.new_withdrawal(user.username, withdraw_amt, user.address)
         return redirect(url_for('withdraw'))
     else:
         return redirect(url_for('withdraw'))
@@ -100,7 +170,6 @@ def delete_withdrawal():
     User.delete_withdrawal(withdrawal_id)
     return redirect(url_for('withdrawal_requests'))
 
-
 @app.route('/contactslist')
 def contacts_list():
     user = User.get_by_username(session['username'])
@@ -116,15 +185,6 @@ def new_contact():
     user.contacts[username_contact] = username_contactdes
     user.update_contacts(user.contacts)
     return redirect(url_for('contacts_list'))
-
-
-
-
-
-@app.before_first_request
-def initialize_database():
-    Database.initialize()
-
 
 @app.route('/auth/login', methods=['POST'])
 def login_user():
@@ -150,8 +210,8 @@ def send_transaction():
     if rec is not None and user.balance >= amount and recipient != user.username and amount*usd_price >= 0.5:
         user.balance = user.balance - amount
         rec.balance = rec.balance + amount
-        user.new_transaction(user.username, recipient, amount, message, 'Sent')
-        rec.new_transaction(user.username, recipient, amount, message, 'Received')
+        user.new_transaction(user.username, recipient, amount, message, 'Sent', datetime.datetime.utcnow())
+        rec.new_transaction(user.username, recipient, amount, message, 'Received', datetime.datetime.utcnow())
         rec.update_balance()
         user.update_balance()
         return redirect(url_for('home_template'))
@@ -163,14 +223,16 @@ def send_transaction():
 def register_user():
     username = request.form['username']
     password = request.form['password']
-    address = request.form['address']
     email = request.form['email']
-    #contacts = ['']
+    my_private_key = random_key()
+    my_public_key = privtopub(my_private_key)
+    my_address = pubtoaddr(my_public_key)
     contacts = {}
-    User.register(username, password, address, email, 0.005, contacts)
-    user = User.get_by_username(session['username'])
-    return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 6),
-                           balance_usd=round(user.balance*usd_price, 3))
+    if User.get_by_username(username) is None:
+        User.register(username, password, my_address, my_private_key, email, 0.00, contacts)
+        return redirect(url_for('home_template'))
+    else:
+        return redirect(url_for('home_template'))
 
 
 @app.route('/transactions')

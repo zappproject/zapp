@@ -1,3 +1,6 @@
+cryptos
+blockcypher==1.0.73
+bitcoin
 click==6.7
 enum34==1.1.6
 Flask==0.12.2
