@@ -129,10 +129,11 @@ def withdraw():
 @app.route('/withdrawbtc', methods=['POST'])
 def withdrawbtc():
     withdraw_amt = request.form['withdraw_amt']
+    print(float(withdraw_amt))
     #withdrawal_send_amt = int(float(withdraw_amt)*100000000)
     user = User.get_by_username(session['username'])
     withdraw_addr = request.form['withdraw_addr']
-    if user.balance >= float(withdraw_amt):
+    if user.balance >= int(float(withdraw_amt)):
         '''inputs = [{'address': '14ZDEfZheM4EihiNybUuZNifdMF3KfKsk6'}, ]
         outputs = [{'address': withdraw_addr, 'value': withdrawal_send_amt}]
         print(outputs)
