@@ -42,12 +42,12 @@ def home_template():
         depo_finale = roblox.json()['balance']
         if depo_finale == 0:
             return render_template("profile.html", username=user.username, address=user.address,
-                                   balance=round(user.balance, 6), balance_usd=round(user.balance * usd_price, 3),
+                                   balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3),
                                    dep_address=my_address, fuckthis=fuckthis)
         else:
             if deposited_finaleis == 0:
                 return render_template("profile.html", username=user.username, address=user.address,
-                                   balance=round(user.balance, 6), balance_usd=round(user.balance * usd_price, 3),
+                                   balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3),
                                    dep_address=my_address, fuckthis=fuckthis)
 
             else:
@@ -80,7 +80,7 @@ def home_template():
                 user.priv_key = my_new_private_key
                 user.address = my_new_address
                 user.update_address()
-                return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 6), balance_usd=round(user.balance * usd_price, 3), dep_address=user.address, fuckthis=fuckthis)
+                return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3), dep_address=user.address, fuckthis=fuckthis)
 
     except:
         return redirect(url_for('register_template'))
@@ -109,31 +109,30 @@ def contact():
 @app.route('/send')
 def send():
     user = User.get_by_username(session['username'])
-    return render_template('send.html', username=user.username, address=user.address, balance=round(user.balance, 6),
+    return render_template('send.html', username=user.username, address=user.address, balance=round(user.balance, 8),
                            balance_usd=round(user.balance*usd_price, 3))
 
 @app.route('/retry')
 def retry():
     user = User.get_by_username(session['username'])
-    return render_template('Fxxkit.html', username=user.username, address=user.address, balance=round(user.balance, 6),
+    return render_template('Fxxkit.html', username=user.username, address=user.address, balance=round(user.balance, 8),
                            balance_usd=round(user.balance*usd_price, 3)
                            )
 
 @app.route('/withdraw')
 def withdraw():
     user = User.get_by_username(session['username'])
-    return render_template('withdraw.html', username=user.username, address=user.address, balance=round(user.balance, 6),
+    return render_template('withdraw.html', username=user.username, address=user.address, balance=round(user.balance, 8),
                            balance_usd=round(user.balance*usd_price, 3))
 
 
 @app.route('/withdrawbtc', methods=['POST'])
 def withdrawbtc():
     withdraw_amt = request.form['withdraw_amt']
-    print(float(withdraw_amt))
     #withdrawal_send_amt = int(float(withdraw_amt)*100000000)
     user = User.get_by_username(session['username'])
     withdraw_addr = request.form['withdraw_addr']
-    if user.balance >= int(float(withdraw_amt)):
+    if user.balance >= float(withdraw_amt):
         '''inputs = [{'address': '14ZDEfZheM4EihiNybUuZNifdMF3KfKsk6'}, ]
         outputs = [{'address': withdraw_addr, 'value': withdrawal_send_amt}]
         print(outputs)
