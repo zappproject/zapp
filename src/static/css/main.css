@@ -23,11 +23,6 @@ a:hover{
 body{
     margin: 0;
 }
-.mainhead{
-    background-size:     cover;
-    background-repeat:   no-repeat;
-    background-position: center center;
-}
 
 .column img {
   margin-top: 8px;
