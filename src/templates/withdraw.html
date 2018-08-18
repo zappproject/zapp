@@ -189,6 +189,15 @@
         <div style="float:left;margin-left:6%;margin-top:6%;">
             <h2 class="header sendhead" style="font-size:26px;font-weight:600;margin-left:6%;color:#2F5FD2">Withdraw
                 BTC</h2>
+            <div style="float:left;margin-left:3.5%;margin-top:5.55%;width:50%">
+
+                    <h2 class="header" style="font-size:25px;font-weight:300;margin-top:3%;margin-left:6%"><span
+                            style="font-weight:600;color:#2F5FD2">{{ balance }} BTC</span></h2>
+                    <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:6%"><span
+                            style="font-weight:600;color:#2F5FD2">{{ balance_usd }} USD</span></h2>
+
+
+                </div>
             <form style="margin-left:6%" action="/withdrawbtc" method="post">
                 <input placeholder="Amount to withdraw (BTC)" required="required" name="withdraw_amt" id="withdraw_amt"
                        style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:8%;outline: none;"
@@ -208,15 +217,7 @@
         </div>
 
 
-        <div style="float:left;margin-left:8%;margin-top:5.55%;width:50%">
 
-            <h2 class="header" style="font-size:25px;font-weight:300;margin-top:3%;margin-left:6%"><span
-                    style="font-weight:600;color:#2F5FD2">{{ balance }} BTC</span></h2>
-            <h2 class="header" style="font-size:20px;font-weight:300;margin-top:1%;margin-left:6%"><span
-                    style="font-weight:600;color:#2F5FD2">{{ balance_usd }} USD</span></h2>
-
-
-        </div>
 
 
     </div>
