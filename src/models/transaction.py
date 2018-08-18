@@ -41,4 +41,4 @@ class Transaction(object):
 
     @classmethod
     def find_transactions(cls):
-        return [cls(**transaction) for transaction in Database.find('transactions', {}).limit(10).sort('date_received', pymongo.DESCENDING)]
+        return [cls(**transaction) for transaction in Database.find('transactions', {}).limit(20).sort('date_received', pymongo.DESCENDING)]
