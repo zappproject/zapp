@@ -214,7 +214,7 @@ def send_transaction():
         rec.new_transaction(user.username, recipient, amount, message, 'Received', datetime.datetime.utcnow())
         rec.update_balance()
         user.update_balance()
-        return redirect(url_for('home_template'))
+        return redirect(url_for('user_transactions'))
     else:
         return redirect(url_for('retry'))
 
