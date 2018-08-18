@@ -3,15 +3,15 @@ from pymongo import MongoClient
 
 
 class Database(object):
-    URI = os.environ.get("MONGODB_URI")
-    #URI = "mongodb://127.0.0.1:27017"
+    #URI = os.environ.get("MONGODB_URI")
+    URI = "mongodb://127.0.0.1:27017"
     DATABASE = None
 
     @staticmethod
     def initialize():
         client = MongoClient(Database.URI)
-        Database.DATABASE = client.get_default_database()
-        #Database.DATABASE = client['zappapp']
+        #Database.DATABASE = client.get_default_database()
+        Database.DATABASE = client['zappapp']
 
     @staticmethod
     def insert(collection, data):

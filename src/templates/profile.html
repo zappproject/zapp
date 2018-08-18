@@ -53,29 +53,102 @@
 
 
     </script>
+    <style>
+        .bar-font{
+           color:black;
+           font-weight:300;
+           font-size:17px;
+           text-align:left;
+           padding-top:15px;
+           padding-left:17px;
+        }
+        .bar-width{
+            width:15%;
+        }
+        .Zapplogo{
+            color:#2F5FD2;
+            font-weight:600;
+            font-size:26px;
+            text-align:left;
+            padding-top:15px;
+            padding-left:18px;
+        }
+        .sendhead{
+            margin-top:6.8%;
+        }
+        .barcode{
+            width:12%;
+            margin-top:1%;
+        }
+        .depositj{
+            margin-top:2%;
+        }
+        .balance-display{
+            margin-left:15%;
+            margin-top:-3.8%;
+        }
+        .dep_address{
+            font-size:17px;
+        }
+        @media (max-width: 500px) {
+            .sendhead {
+                margin-top:20%;
+            }
+            .Zapplogo{
+            font-size:20px;
+            }
+            .bar-width{
+            width:20%;
+
+            }
+            .bar-font{
+           font-weight:400;
+           font-size:12px;
+        }
+        .barcode{
+            width:40%;
+            margin-top:3%;
+        }
+        .incdes{
+            display:none;
+        }
+        .depositj{
+            margin-top:10%;
+        }
+        .balance-display{
+            margin-left:-13%;
+            margin-top:5%;
+        }
+        .dep_address{
+            font-size:14px;
+        }
+
+
+        }
+    </style>
+
 
 
 </head>
 
 <div style="width:100%;margin:0 auto;">
 
-    <div style="width:20%;background-color:#eef2f3;height:100%;float:left">
+    <div class="bar-width" style="background-color:#eef2f3;height:100%;float:left">
         <div style="height:8%;background-color:white">
-            <h1 class="header" href="/index.html"
-                style="color:#2F5FD2;font-weight:600;font-size:26px;text-align:left;padding-top:15px;padding-left:18px;">
+            <h1 class="header Zapplogo">
                 Zapp<sub style="font-size:12px">Beta</sub></h1>
         </div>
         <div style="height:92%">
-            <h2 style="color:black;font-weight:400;font-size:17px;text-align:left;padding-top:20px;padding-left:17px;">
+            <h2 class="bar-font" style="font-weight:400;padding-top:20px;">
                 <b>Account</b></h2>
-            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">
+            <h2 class="bar-font">
                 <a href="/send" style="color:black">Send</a></h2>
-            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">
+            <h2 class="bar-font">
                 <a href="/transactions" style="color:black">Transactions</a></h2>
-            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">
+            <h2 class="bar-font">
                 <a href="/contactslist" style="color:black">Contacts</a></h2>
 
-            <h2 style="color:black;font-weight:300;font-size:17px;text-align:left;padding-top:15px;padding-left:17px;">
+            <h2 class="bar-font">
                 <a href="/withdraw" style="color:black">Withdraw</a></h2>
 
 
@@ -83,14 +156,14 @@
     </div>
     <div style="width:80%;background-color:white;height:100%;float:left;">
         <div>
-            <h2 class="header" style="font-size:34px;font-weight:600;margin-top:6.8%;margin-left:6.8%;color:#2F5FD2">{{
+            <h2 class="header sendhead" style="font-size:34px;font-weight:600;margin-left:6.8%;color:#2F5FD2">{{
                 username }}</h2>
 
-                <div style="float:right;margin-left:15%;margin-top:-3.8%;width:50%;clear:both;">
+                <div  class="balance-display" style="width:50%;clear:both;">
 
-                    <h2 class="header" style="font-size:25px;font-weight:300;margin-top:0%;margin-left:6%"><span
+                    <h2 class="header" style="font-size:25px;font-weight:300;margin-top:2%;margin-left:40%"><span
                             style="font-weight:600;color:#2F5FD2">{{ balance }} BTC</span></h2>
-                    <h2 class="header" style="font-size:20px;font-weight:300;margin-top:0%;margin-left:6%"><span
+                    <h2 class="header" style="font-size:20px;font-weight:300;margin-top:0%;margin-left:40%"><span
                             style="font-weight:600;color:#2F5FD2">{{ balance_usd }} USD</span></h2>
 
 
@@ -101,14 +174,14 @@
 
             </h2>
 
-            <h2 class="header" style="font-size:21px;font-weight:400;margin-top:3%;margin-left:6.8%;color:#2F5FD2">
+            <h2 class="header depositj" style="font-size:21px;font-weight:400;margin-left:6.8%;color:#2F5FD2">
                 Deposit</h2>
             <p class="header" style="font-size:16px;font-weight:300;margin-top:1%;color:black;margin-left:6.8%">To
-                Deposit into your Zapp account, send BTC <br>to the address located below. Deposits may<br> take longer than expected, but I am working<br> diligently to bring lightning network functionality.
+                Deposit send BTC to the<br> address located below. <span class="incdes">Deposits may<br> take longer than expected, but I am working<br> diligently to bring lightning network functionality.</span>
             </p>
-            <h2 class="header" style="font-size:15px;font-weight:300;margin-top:1%;color:black;margin-left:6.8%"><span
+            <h2 class="header dep_address" style="font-weight:300;margin-top:1%;color:black;margin-left:6.8%"><span
                     style="font-weight:400;">{{ dep_address }}</span></h2>
-            <img src="{{ fuckthis }}" style="width:12%;margin-left:6.8%;margin-top:1%;">
+            <img src="{{ fuckthis }}" class="barcode" style="margin-left:6.8%;">
 
         </div>
 
@@ -167,9 +240,7 @@
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
                 <a href="/faq" style="color:#2F5FD2">FAQ</a>
             </li>
-            <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
-                <a href="/terms" style="color:#2F5FD2">Terms of Service</a>
-            </li>
+
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2;margin-right:40px;">
                 <a href="/contact" style="color:#2F5FD2">Contact</a>
             </li>
