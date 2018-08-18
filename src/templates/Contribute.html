@@ -50,6 +50,16 @@
             }
 
     </script>
+    <style>
+        .desc-about{
+            width:50%
+        }
+        @media (max-width: 500px) {
+            .desc-about{
+            width:90%
+        }
+        }
+    </style>
 
 
 </head>
@@ -161,13 +171,13 @@
         <div style="margin-left:10%;display:inline-block;z-index:2;float:left">
             <h1 class="header" style="text-align:left;font-size:33px;color:black;FONT-WEIGHT:400;">Contributing</h1>
             <hr style="background-color:#194084;width:60px;float:left;height:2px">
-            <p class="header"
-               style="text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;margin-top:3%;clear:both;width:50%">
+            <p class="header desc-about"
+               style="text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;margin-top:3%;clear:both;">
                 As <span style="font-weight:600;color:#2F5FD2">Zapp</span> does not currently make revenue from the
                 service, it relies upon community contributions. If you would like to contribute. Contributions can
                 take the form of <b>Bitcoin, Ideas for Improvement and anything you feel would help.</b></p>
-            <p class="header"
-               style="text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;margin-top:3%;clear:both;width:50%;">
+            <p class="header desc-about"
+               style="text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;margin-top:3%;clear:both;">
                 <b>If you would like to contribute Btc</b>, send Btc to my personal Username :). If you would like to potentially
             help develop this project, please email me, and I will remember to call upon you if we ever need to hire someone.</p>
             <p class="header"
@@ -177,8 +187,8 @@
                 <h1 class="header" style="text-align:left;font-size:23px;color:black;FONT-WEIGHT:400;margin-top:50px">
                     Contributing Ideas</h1>
                 <hr style="background-color:#194084;width:60px;float:left;height:2px">
-                <p class="header"
-                   style="text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;margin-top:3%;clear:both;width:50%">
+                <p class="header desc-about"
+                   style="text-align:left;line-height:1.6;font-size:16px;color:black;font-weight:300;margin-top:3%;clear:both;">
                     If you would like to contribute ideas for improvement, either you can send them directly by email or
                     through any of the social media platforms. Any improvements used from your suggestions will be
                     credited to you. If you would like to be involved in the actual code, please contact me via email to
@@ -229,7 +239,9 @@
 <footer style="position: fixed; bottom: 0;
   width: 100%;
   height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color:white">
     <div style="text-align:center">
         <ul style="font-weight:400;font-size:13px;list-style-type:none;display:inline;" class="header">
