@@ -70,6 +70,9 @@
         .sendhead{
             margin-top:5%;
         }
+        .input-send{
+            width:250px;
+        }
         @media (max-width: 500px) {
             .sendhead {
                 margin-top:20%;
@@ -78,12 +81,16 @@
             font-size:20px;
             }
             .bar-width{
-            width:20%;
+            width:25%;
 
             }
             .bar-font{
            font-weight:400;
-           font-size:12px;
+           font-size:14px;
+           padding-left:14px;
+        }
+        .input-send{
+            width:230px;
         }
 
 
@@ -106,7 +113,7 @@
             <h2 class="bar-font" style="font-weight:400">
                 <b>Send</b></h2>
             <h2 class="bar-font">
-                <a href="/transactions" style="color:black">Transactions</a></h2>
+                <a href="/transactions" style="color:black">Payments</a></h2>
             <h2 class="bar-font">
                 <a href="/contactslist" style="color:black"> Contacts</a></h2>
 
@@ -118,22 +125,22 @@
     </div>
 
 
-    <div style="width:80%;background-color:white;height:100%;float:left">
+    <div style="width:75%;background-color:white;height:100%;float:left">
 
         <div style="float:left;margin-left:6%;margin-top:6%;">
             <h2 class="header sendhead" style="font-size:26px;font-weight:600;margin-left:6%;color:#2F5FD2">Send
                 BTC</h2>
             <form style="margin-left:6%" action="/auth/transaction" method="post">
                 <input placeholder="Recipient Username" required="required" name="recipient" id="recipient"
-                       style="border:0;border-bottom:1px solid #2F5FD2;width:250px;height;50px;margin-top:8%;outline: none;"
-                       type="text">
+                       style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:8%;outline: none;"
+                       type="text" class="input-send">
                 <br>
                 <input placeholder="Amount in USD (Minimum 0.5)" required="required" name="amount" id="amount"
-                       style="border:0;border-bottom:1px solid #2F5FD2;width:250px;height;50px;margin-top:15%;user-select: none;outline: none;"
-                       type="text">
+                       style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:15%;user-select: none;outline: none;"
+                       type="text" class="input-send">
                 <br>
-                <textarea placeholder="Message" required="required" name="message" id="message"
-                          style="border:0;border-bottom:1px solid #2F5FD2;width:250px;height;90px;margin-top:15%;user-select: none;outline: none;"></textarea>
+                <textarea placeholder="Message" required="required" name="message" id="message" class="input-send"
+                          style="border:0;border-bottom:1px solid #2F5FD2;height;90px;margin-top:15%;user-select: none;outline: none;"></textarea>
                 <button type="submit" class="header"
                         style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;clear:both;display:flex;justify-content:center;font-size:15px;margin-top:25px;">
                     <span style="color:white">Send</span>
