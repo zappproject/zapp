@@ -94,6 +94,13 @@
         .cont-prof{
             height:100%;
         }
+        .logout{
+            margin-top:20px;
+        }
+        .first-comp{
+            margin-left:-15px;
+        }
+
         @media (max-width: 500px) {
             .sendhead {
                 margin-top:20%;
@@ -129,7 +136,16 @@
             font-size:14px;
         }
         .cont-prof{
-            height:120%;
+            height:100%;
+        }
+        .settings {
+            display:none;
+        }
+        .logout{
+            margin-top:10px;
+        }
+        .first-comp{
+            margin-left:-20px;
         }
 
 
@@ -170,7 +186,7 @@
 
                 <div  class="balance-display" style="width:50%;clear:both;">
 
-                    <h2 class="header" style="font-size:25px;font-weight:300;margin-top:2%;margin-left:40%"><span
+                    <h2 class="header" style="font-size:25px;font-weight:300;margin-top:0%;margin-left:40%"><span
                             style="font-weight:600;color:#2F5FD2">{{ balance }} BTC</span></h2>
                     <h2 class="header" style="font-size:20px;font-weight:300;margin-top:0%;margin-left:40%"><span
                             style="font-weight:600;color:#2F5FD2">{{ balance_usd }} USD</span></h2>
@@ -196,15 +212,15 @@
 
 
         <div style="float:left;margin-top:5%;margin-left:6.8%">
+            <div class="settings">
             <h2 class="header" style="font-size:21px;font-weight:400;color:#2F5FD2">Settings</h2>
 
             <p class="header" style="font-size:16px;font-weight:300;margin-top:10%;color:black">Change Password </p>
-            <a href="/aboutus.html" style="color:white">
-                <button class="header"
-                        style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:0px;clear:both;display:flex;justify-content:center;font-size:15px;margin:0 auto;margin-top:20px;">
+            </div>
+                <button class="header logout"
+                        style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:0px;clear:both;display:flex;justify-content:center;font-size:15px;margin:0 auto;">
                     <a href="/logout"><span style="color:white">Log Out</span></a>
                 </button>
-            </a>
 
 
         </div>
@@ -236,7 +252,7 @@
   background-color:white">
     <div style="text-align:center">
         <ul style="font-weight:400;font-size:13px;list-style-type:none;display:inline;" class="header">
-            <li style="margin-left:-15px;line-height:22px;list-style-type:none;display:inline;padding:0 5px;font-weight:400;font-size:15px;color:#2F5FD2;">
+            <li class="first-comp" style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;font-weight:400;font-size:15px;color:#2F5FD2;">
                 ⓒ Genesis One
             </li>
             <li style="line-height:22px;list-style-type:none;display:inline;padding:0 5px;color:#2F5FD2">
