@@ -1,0 +1,21 @@
+{
+  "short_name": "Zapp",
+  "name": "Zapp",
+  "icons": [
+    {
+      "src": "/src/static/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/src/static/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "white",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "white"
+}
