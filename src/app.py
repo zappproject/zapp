@@ -40,7 +40,7 @@ def home_template():
     try:
         user = User.get_by_username(session['username'])
         my_address = user.address
-        fuckthis = 'https://api.qrserver.com/v1/create-qr-code/?data={}&amp;size=100x100'.format(my_address)
+        #fuckthis = 'https://api.qrserver.com/v1/create-qr-code/?data={}&amp;size=100x100'.format(my_address)
         priv = user.priv_key
         roblox = requests.get('https://api.blockcypher.com/v1/btc/main/addrs/{}/balance'.format(my_address))
         fee = requests.get('http://api.blockcypher.com/v1/btc/main')
@@ -50,12 +50,12 @@ def home_template():
         if depo_finale == 0:
             return render_template("profile.html", username=user.username, address=user.address,
                                    balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3),
-                                   dep_address=my_address, fuckthis=fuckthis)
+                                   dep_address=my_address)
         else:
             if deposited_finaleis == 0:
                 return render_template("profile.html", username=user.username, address=user.address,
                                    balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3),
-                                   dep_address=my_address, fuckthis=fuckthis)
+                                   dep_address=my_address)
 
             else:
                 inputs = c.unspent(my_address)
@@ -87,7 +87,7 @@ def home_template():
                 user.priv_key = my_new_private_key
                 user.address = my_new_address
                 user.update_address()
-                return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3), dep_address=user.address, fuckthis=fuckthis)
+                return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3), dep_address=user.address)
 
     except:
         return redirect(url_for('register_template'))
