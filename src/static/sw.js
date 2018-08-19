@@ -2,6 +2,8 @@ var CACHE_NAME = 'Zapp App';
 var urlsToCache = [
   '/register',
   '/send',
+  'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
+  'https://code.jquery.com/jquery-3.2.1.slim.min.js',
   '/static/css/main.css',
   '/static/script.js'
 ];
