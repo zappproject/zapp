@@ -9,6 +9,7 @@ from src.common.database import Database
 from bitcoin import serialize
 from blockcypher import *
 from src.models.user import User
+from flask_sslify import SSLify
 
 __author__ = 'zapp'
 
@@ -16,6 +17,7 @@ __author__ = 'zapp'
 from flask import Flask, render_template, request, session, make_response
 
 app = Flask(__name__)
+sslify = SSLify(app)
 app.config.from_object('src.config')
 app.secret_key = "Zapp"
 
