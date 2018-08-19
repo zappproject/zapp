@@ -1,10 +1,12 @@
-importScripts('/cache-polyfill.js');
+importScripts('/static/cache-polyfill.js');
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('Zapp').then(function(cache) {
      return cache.addAll([
        '/static/icon.png',
+       '/templates/home.html',
+       '/templates/profile.html'
      ]);
    })
  );
