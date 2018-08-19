@@ -48,6 +48,10 @@
                     none;
                 }
             }
+            function AvoidSpace(event) {
+    var k = event ? event.which : window.event.keyCode;
+    if (k == 32) return false;
+}
 
 
 
@@ -86,7 +90,7 @@
 
         @media (max-width: 500px) {
             .sendhead {
-                margin-top:13%;
+                margin-top:11%;
             }
             .Zapplogo{
             font-size:20px;
@@ -204,11 +208,11 @@
             <form style="margin-left:6%" action="/auth/transaction" method="post">
                 <input placeholder="Recipient Username" required="required" name="recipient" id="recipient"
                        style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:8%;outline: none;"
-                       type="text" class="input-send">
+                       type="text" class="input-send" onkeypress="return AvoidSpace(event)" >
                 <br>
                 <input placeholder="Amount in USD (Minimum 0.5)" required="required" name="amount" id="amount"
                        style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:15%;user-select: none;outline: none;"
-                       type="text" class="input-send">
+                       type="text" class="input-send" onkeypress="return AvoidSpace(event)" >
                 <br>
                 <textarea placeholder="Message" required="required" name="message" id="message" class="input-send"
                           style="border:0;border-bottom:1px solid #2F5FD2;height;90px;margin-top:15%;user-select: none;outline: none;"></textarea>

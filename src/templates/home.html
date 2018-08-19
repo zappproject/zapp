@@ -38,10 +38,7 @@
                 }
             }
 
-            function AvoidSpace(event) {
-    var k = event ? event.which : window.event.keyCode;
-    if (k == 32) return false;
-}
+
 
 
          </script>
@@ -60,6 +57,7 @@
             }
             .des-des1{
                 font-size:16px;
+                width:54%;
 
 
             }
@@ -85,8 +83,12 @@
                 width:75%;
             }
              .feat-cont{
-                height:300px
+                height:400px
             }
+            .details{
+               margin-top:40%
+            }
+
 
         @media (max-width: 500px) {
             .img {
@@ -98,23 +100,25 @@
             }
             .head-des{
                 font-size:25px;
+                margin-top:10%;
             }
             .sub-des{
                 font-size:22px;
             }
             .des-des1{
                 font-size: 14px;
-                width:100%
+                width:86%;
+
 
             }
             .mainhead{
-                height:80%;
+                height:90%;
             }
             .inp-width{
-                width:340px;
+                width:300px;
             }
             .feat-cont{
-                height:800px
+                height:660px
             }
             .feat-1{
                 position:absolute;
@@ -135,6 +139,9 @@
                 width:200px;
                 text-align:center;
 
+            }
+            .details{
+               margin-top:10%
             }
 
 
@@ -229,7 +236,8 @@
             <div style="margin-left:10%;display:inline-block;z-index:2;float:left">
                 <h1 class="header head-des" style="text-align:left;color:black;FONT-WEIGHT:400;">Bitcoin Payments Simplified.</h1>
                 <hr style="background-color:#194084;width:60px;float:left;height:2px">
-                <p class="header des-des1" style="text-align:left;line-height:1.6;color:black;font-weight:300;margin-top:3%;clear:both"><span style="color:#2F5FD2;font-weight:600;font-size:17px">Zapp</span>, the simplest Bitcoin payments application, utilizing<br> human readable usernames for frictionless P2P transactions.<br><span style="font-weight:500">No ID, No Banks, No Fee's, Instant BTC Payments</span></p>
+                <p class="header des-des1" style="text-align:left;line-height:1.6;color:black;font-weight:300;margin-top:3%;clear:both"><span style="color:#2F5FD2;font-weight:600;font-size:17px">Zapp</span>, the simplest Bitcoin payments application, utilizing human readable usernames for frictionless P2P transactions.<br><span style="font-weight:500">No ID, No Banks, No Fee's, Instant BTC Payments</span></p>
+
                 <p style="font-size:10px;color:#989898;margin-top:-5px">by clicking Get Started, I agree to the <b><span style="color:grey;">Terms of Service</span></b> and have read <b><span style="color:grey;"><u>More Info</u></span></b>. </p>
                 <!--<button class="header" style="border-width:0;border-radius:50px;border:2px solid #194084;color:#194084;background-color:clear;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:400;width:240px">
                     Ask Us Anything
@@ -335,8 +343,8 @@
     </div>
 -->
     <div style="height:430px;background-color:#fafafa">
-        <h2 class="header sub-des" style="text-align:left;color:black;FONT-WEIGHT:400;text-align:center;padding-top:78px">Send Bitcoin with only a Username.</h2>
-        <p style="text-align:center;line-height:1.6;font-size:15px;color:black;font-weight:300;padding-top:2%;clear:both;margin:auto;" class="header des-prod">Mass adoption depends on ease of use. The Zapp platform addresses this concern by allowing for instant transactions using human usernames, making <b>sending bitcoin easier than an username</b>. Your desktop or hardware wallet serves as your personal <b>"Bank"</b>, whilst everyday transactions are made on the Zapp platform for convenience. <b>The easiest way to harness the power of Bitcoin.</b></p>
+        <h2 class="header sub-des" style="text-align:left;color:black;FONT-WEIGHT:400;text-align:center;padding-top:78px">Send Bitcoin like an Email. Easily.</h2>
+        <p style="text-align:center;line-height:1.6;font-size:15px;color:black;font-weight:300;padding-top:2%;clear:both;margin:auto;" class="header des-prod">Mass adoption depends on ease of use. The Zapp platform addresses this by allowing for instant transactions using human usernames, making <b>sending bitcoin easier than an email</b>. Your desktop or hardware wallet serves as your personal <b>"Bank"</b>, whilst everyday transactions are made on the Zapp platform for convenience. <b>The easiest way to harness the power of Bitcoin.</b></p>
         <div>
             <a href="/aboutus" style="text-decoration:none;" >
         <button class="header" style="border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;padding: .8rem .8rem;padding-left:.8rem; padding-right:.8rem;font-weight:300;width:130px;margin-left:0px;clear:both;display:flex;justify-content:center;font-size:15px;margin:0 auto;margin-top:30px;">
@@ -345,13 +353,13 @@
                 </a>
         </div>
     </div>
-    <div style="background-color:white;position:relative;width:100%;" class="header feat-cont">
+    <!--<div style="background-color:white;position:relative;width:100%;" class="header feat-cont">
         <div style="height:200px;">
         <div style="display:flex;width:85%;margin:auto;text-align:center;margin-top:6%;">
 
 
             <div class="feat-1" style="flex:1;width:200px;font-size:20px;color:black;FONT-WEIGHT:300;">
-                <!--<img src="techhard.svg" style="height:100px;">    -->
+                <!--<img src="techhard.svg" style="height:100px;">
                 <p style="margin-top:3%;font-weight:400;color:#2F5FD2">Easy to use</p>
                 <hr  style="width:100px;background-color:black;height:1px">
                 <p style="font-size:16px;font-weight:300;color:black"><b>Bitcoin without the jargon.</b></p>
@@ -361,14 +369,14 @@
 
 
             <div class="feat-2" style="flex:1;width:200px;font-size:20px;color:black;FONT-WEIGHT:300;">
-                <!--<img src="security.svg" style="height:100px;">--> <p style="margin-top:3%;font-weight:400;color:#2F5FD2">Instant, Secure, Free</p>
+                <!--<img src="security.svg" style="height:100px;"> <p style="margin-top:3%;font-weight:400;color:#2F5FD2">Instant, Secure, Free</p>
                 <hr  style="width:100px;background-color:black;height:1px">
                 <p style="font-size:16px;font-weight:300;color:black"><b>No. Fee's. Forever.</b></p>
                 <p class="feat-des" style="font-size:15px;">Zapp is free to use, and will always be a platform for instantaeneous, secure transactions and withdrawals. </p>
             </div>
 
             <div class="feat-3"  style="flex:1;width:200px;text-align:center;font-size:20px;color:black;FONT-WEIGHT:300;">
-                 <!--<img src="p2p.svg" style="height:100px;">-->
+                 <!--<img src="p2p.svg" style="height:100px;">
                  <p style="margin-top:3%;font-weight:400;color:#2F5FD2">Micro-Payments</p>
                                 <hr  style="width:100px;background-color:black;height:1px">
 
@@ -376,10 +384,64 @@
                  <p class="feat-des" style="font-size:15px;margin:auto;">Zapp's no credit card, no fee transactions makes it ideal for instant worldwide micropayments to anyone you want.  </p>
             </div>
         </div>
-        <!--<p style="text-align:center;font-family:roboto;font-weight:300;;width:47%;margin:auto;margin-top:3%;line-height:1.65">Launched in 2018, Bit09 is dedicated towards fostering the <b>mass adoption</b> of crypto-currencies as a means for payment. Sell anything from <b>electronics</b> to <b>clothing</b> with fellow crypto users, with an multi-sig and review system built in place to prevent fraud and ensure funds <b>security</b>. Bit09 does not take a fee on any sales. you keep <b>100%</b>, guaranteed.     </p>-->
+        <!--<p style="text-align:center;font-family:roboto;font-weight:300;;width:47%;margin:auto;margin-top:3%;line-height:1.65">Launched in 2018, Bit09 is dedicated towards fostering the <b>mass adoption</b> of crypto-currencies as a means for payment. Sell anything from <b>electronics</b> to <b>clothing</b> with fellow crypto users, with an multi-sig and review system built in place to prevent fraud and ensure funds <b>security</b>. Bit09 does not take a fee on any sales. you keep <b>100%</b>, guaranteed.     </p>
     </div>
 
-    </div>
+    </div>-->
+    <section class="products-area section-gap feat-cont">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-lg-3 col-md-6">
+							<div class="single-product">
+
+								<div class="details">
+									<h4 style="margin-top:3%;font-weight:400;color:#2F5FD2;font-size:20px;">Easy To Use</h4>
+                                    <hr style="background-color:#194084;width:60px;float:left;height:2px;clear:both">
+									<p style="font-size:15px;margin:0 auto;clear:both">
+										Send Bitcoin like you would an email. No complicated numbers and terminology. instead utilize simple understandable usernames like "mywallet"
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-product">
+								<div class="details">
+									<h4 style="margin-top:3%;font-weight:400;color:#2F5FD2;font-size:20px;">Secure and Private</h4>
+                                    <hr style="background-color:#194084;width:60px;float:left;height:2px;clear:both">
+									<p style="font-size:15px;margin:0 auto;clear:both">
+										Who are in extremely love with eco friendly system.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-product">
+
+								<div class="details">
+									<h4 style="margin-top:3%;font-weight:400;color:#2F5FD2;font-size:20px;">Instant, Secure, Free</h4>
+                                    <hr style="background-color:#194084;width:60px;float:left;height:2px;clear:both">
+									<p style="font-size:15px;margin:0 auto;clear:both">
+										Zapp is free to use, and will always be a platform for instantaeneous, secure transactions and withdrawals.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="single-product">
+
+								<div class="details">
+									<h4 style="margin-top:3%;font-weight:400;color:#2F5FD2;font-size:20px;">Micro-Payments</h4>
+                                    <hr style="background-color:#194084;width:60px;float:left;height:2px;clear:both">
+									<p style="font-size:15px;margin:0 auto;clear:both">
+										Zapp's no credit card, no fee transactions makes it ideal for instant worldwide micropayments to anyone you want.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
 
 

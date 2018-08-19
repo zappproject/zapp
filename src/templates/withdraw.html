@@ -92,7 +92,7 @@
 
         @media (max-width: 500px) {
             .sendhead {
-                margin-top:13%;
+                margin-top:11%;
             }
             .Zapplogo{
             font-size:20px;
@@ -211,7 +211,7 @@
             <form style="margin-left:6%" action="/withdrawbtc" method="post">
                 <input placeholder="Amount to withdraw (BTC)" required="required" name="withdraw_amt" id="withdraw_amt"
                        style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:8%;outline: none;"
-                       type="text" class="input-send">
+                       type="text" class="input-send" onkeypress="return AvoidSpace(event)" >
                 <br>
                 <input placeholder="BTC Address To Withdraw To" required="required" name="withdraw_addr" id="withdraw_addr"
                        style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:15%;user-select: none;outline: none;"
