@@ -28,6 +28,10 @@ c = Bitcoin()
 def initialize_database():
     Database.initialize()
 
+@app.route('/sw.js', methods=['GET'])
+def sw():
+    return app.send_static_file('sw.js')
+
 @app.route('/')
 def home_template():
     try:
