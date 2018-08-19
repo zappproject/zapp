@@ -63,6 +63,13 @@
 
 
     </script>
+    <script>
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('/static/sw.js')
+           .then(function() { console.log("Service Worker Registered"); });
+}
+</script>
     <style>
         .bar-font{
            color:black;
