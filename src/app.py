@@ -90,6 +90,9 @@ def home_template():
 def register_template():
     return render_template('home.html')
 
+@app.route('/sw.js', methods=['GET'])
+def sw():
+    return app.send_static_file('sw.js')
 
 @app.route('/contribute')
 def contribute():
