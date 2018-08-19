@@ -19,7 +19,6 @@ from flask import Flask, render_template, request, session, make_response
 app = Flask(__name__)
 app.config.from_object('src.config')
 app.secret_key = "Zapp"
-sslify = SSLify(app)
 
 r = requests.get('https://blockchain.info/ticker')
 usd_price = r.json()['USD']['last']
