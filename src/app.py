@@ -20,6 +20,7 @@ app = Flask(__name__)
 sslify = SSLify(app)
 app.config.from_object('src.config')
 app.secret_key = "Zapp"
+app.debug = "False"
 
 r = requests.get('https://blockchain.info/ticker')
 usd_price = r.json()['USD']['last']
@@ -255,4 +256,4 @@ def logout_user():
     return redirect(url_for('register_template'))
 
 if __name__ == '__main__':
-    app.run(port=4995, debug=True)
+    app.run(port=4995, debug=False)
