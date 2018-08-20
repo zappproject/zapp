@@ -226,7 +226,7 @@ def send_transaction():
     amount = float(amount)/usd_price
     user = User.get_by_username(session['username'])
     rec = User.get_by_username(recipient)
-    if rec is not None and user.balance >= amount and recipient != user.username and amount*usd_price >= 0.5:
+    if rec is not None and user.balance >= amount and recipient != user.username and amount*usd_price >= 0.1:
         user.balance = user.balance - amount
         rec.balance = rec.balance + amount
         user.new_transaction(user.username, recipient, amount, message, 'Sent', datetime.datetime.utcnow())
