@@ -11,7 +11,7 @@ class Database(object):
     def initialize():
         client = MongoClient(Database.URI)
         Database.DATABASE = client.get_default_database()
-       # Database.DATABASE = client['zappapp']
+        #Database.DATABASE = client['zappapp']
 
     @staticmethod
     def insert(collection, data):

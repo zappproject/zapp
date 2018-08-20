@@ -35,6 +35,10 @@ def before_request():
         code = 301
         return redirect(url, code=code)
 
+@app.route('/loginpage')
+def login_template():
+    return render_template('login.html')
+
 @app.route('/')
 def home_template():
     try:

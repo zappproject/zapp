@@ -60,3 +60,8 @@ body{
 
 }
 
+.logo-img{margin:auto; height:65px; width:auto; display:block;}
+.prod-des{text-align: center;width: 28%; color:black; margin: auto; margin-top:-5px; font-size: 19.5px; font-family:Roboto; font-weight:400;}
+.reg-form{text-align:center;}.form-center{display: block; margin-top:0.8%; width:24.5%; margin:auto;}.input-box{background-color:#eef2f3;height:42px;width:100%; font-size:17px; margin-top:10px; border-radius:4px; color:black; border:none;}
+.button-container{margin: 0; margin-top:-0.5%; background-color: transparent; text-align: center;}
+
