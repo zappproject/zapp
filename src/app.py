@@ -28,13 +28,6 @@ c = Bitcoin()
 def initialize_database():
     Database.initialize()
 
-@app.before_request
-def before_request():
-    if request.url.startswith('http://'):
-        url = request.url.replace('http://', 'https://', 1)
-        code = 301
-        return redirect(url, code=code)
-
 @app.route('/loginpage')
 def login_template():
     return render_template('login.html')

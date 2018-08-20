@@ -2,6 +2,7 @@ var CACHE_NAME = 'Zapp App';
 var urlsToCache = [
   '/register',
   '/send',
+  '/loginpage',
   '/static/css/main.css',
   '/static/script.js'
 ];
