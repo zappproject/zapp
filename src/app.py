@@ -251,7 +251,7 @@ def register_user():
         User.register(username, password, my_address, my_private_key, email, 0.00, contacts)
         return redirect(url_for('home_template'))
     else:
-        return redirect(url_for('home_template'))
+        return redirect(url_for('userexists'))
 
 
 @app.route('/transactions')
