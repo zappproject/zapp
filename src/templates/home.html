@@ -235,6 +235,7 @@
                 <form method="post" action="/auth/login">
                     <div class="form-group">
                         <input
+                                onkeypress="return AvoidSpace(event)"
                                 type="text"
                                 placeholder="Username"
                                 name="username"
