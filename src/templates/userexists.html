@@ -43,6 +43,16 @@
                     none;
                 }
             }
+            $("#username").popover('show');
+                $("#username").on('click', function () {
+                    $('#username').popover('dispose');
+                });
+             });
+
+              function AvoidSpace(event) {
+    var k = event ? event.which : window.event.keyCode;
+    if (k == 32) return false;
+}
 
 
 
@@ -261,13 +271,6 @@
                      return $("#popover-content").html();
                      }
                    })
-                    $("#username").popover('show');
-                $("#username").on('click', function () {
-                    $('#username').popover('dispose');
-                });
-             });
-
-
             </script>
 
         </div>
