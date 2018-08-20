@@ -134,6 +134,10 @@ def retry():
                            balance_usd=round(user.balance*usd_price, 3)
                            )
 
+@app.route('/userexists')
+def userexists():
+    return render_template('userexists.html')
+
 @app.route('/withdraw')
 def withdraw():
     user = User.get_by_username(session['username'])
