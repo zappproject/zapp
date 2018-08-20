@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/loginpage",
+  "start_url": "/",
   "background_color": "white",
   "display": "standalone",
   "orientation": "portrait",
