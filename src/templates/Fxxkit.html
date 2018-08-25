@@ -231,12 +231,17 @@ $(function() {
                        style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:8%;outline: none;"
                        type="text" class="input-send" onkeypress="return AvoidSpace(event)" >
                 <br>
-                <input placeholder="Amount in USD (Minimum 0.5)" required="required" name="amount" id="amount"
-                       style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:15%;user-select: none;outline: none;"
-                       type="text" class="input-send" onkeypress="return AvoidSpace(event)" >
+
+                <div class="input-group mb-3" style="border:0;;height;50px;margin-top:10%;user-select: none;outline: none;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input placeholder="Amount in USD" type="text" class="form-control input-send" required="required" name="amount" id="amount" aria-label="Amount (to the nearest dollar)">
+                </div>
+
                 <br>
                 <textarea placeholder="Message" required="required" name="message" id="message" class="input-send"
-                          style="border:0;border-bottom:1px solid #2F5FD2;height;90px;margin-top:15%;user-select: none;outline: none;"></textarea>
+                          style="border:0;border-bottom:1px solid #2F5FD2;height;90px;margin-top:0%;user-select: none;outline: none;"></textarea>
 
                 <button type="submit" class="header"
                         style="clear:both;border-width:0;border-radius:50px;color:white;background-color:#2F5FD2;font-size:1rem;line-height:1.5;
