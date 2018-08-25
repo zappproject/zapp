@@ -227,7 +227,7 @@ def login_user_phone():
         User.login(username)
     else:
         session['username'] = None
-        return render_template("login.html", username=session['username'])
+        return render_template("login.html")
     return redirect(url_for('home_template'))
 
 
