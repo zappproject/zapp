@@ -218,6 +218,19 @@ def login_user():
     return redirect(url_for('home_template'))
 
 
+@app.route('/auth/loginphone', methods=['POST'])
+def login_user_phone():
+    username = request.form['username']
+    password = request.form['password']
+
+    if User.login_valid(username, password):
+        User.login(username)
+    else:
+        session['username'] = None
+        return render_template("login.html", username=session['username'])
+    return redirect(url_for('home_template'))
+
+
 @app.route('/auth/transaction', methods=['POST'])
 def send_transaction():
     recipient = request.form['recipient']
