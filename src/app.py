@@ -21,6 +21,10 @@ app.secret_key = "Zapp"
 
 r = requests.get('https://blockchain.info/ticker')
 usd_price = r.json()['USD']['last']
+cny_price = r.json()['CNY']['last']
+jpy_price = r.json()['JPY']['last']
+krw_price = r.json()['KRW']['last']
+eur_price = r.json()['EUR']['last']
 c = Bitcoin()
 
 
@@ -28,12 +32,12 @@ c = Bitcoin()
 def initialize_database():
     Database.initialize()
 
-'''@app.before_request
+@app.before_request
 def before_request():
     if request.url.startswith('http://'):
         url = request.url.replace('http://', 'https://', 1)
         code = 301
-        return redirect(url, code=code)'''
+        return redirect(url, code=code)
 
 @app.route('/loginpage')
 def login_template():
