@@ -105,15 +105,16 @@ $(function() {
             margin-left:3.5%;
         }
         .inputContainer {
-            width: 150px;
+            width: 250px;
             margin-top:15%;
             outline:none;
+            height:50px;
         }
         .inputContainer label {
             float: left;
             margin-right: -6%;
-            font-size:17px;
-            margin-top:0.45%;
+            font-size:17.5px;
+            margin-top:0%;
 
         }
         .inputContainer div {
@@ -127,12 +128,12 @@ $(function() {
             display: block;
             text-align:left;
             outline:none;
-            padding-left:10%;
-            font-size:16px;
+            padding-left:0%;
+            font-size:17px;
 
         }
 
-        @media (max-width: 500px) {
+        @media only screen and (max-width: 500px) {
         .inputContainer label {
             margin-top:0.2%;
             font-size:20px;
@@ -252,14 +253,15 @@ $(function() {
                     <h2 class="header" style="font-size:21px;font-weight:300;margin-top:3%;margin-left:6%"><span
                             style="font-weight:400;color:#2F5FD2">{{ balance }} BTC</span></h2>
                     <h2 class="header" style="font-size:18px;font-weight:300;margin-top:1%;margin-left:6%"><span
-                            style="font-weight:400;color:#2F5FD2">{{ balance_usd }} USD</span></h2>
+                            style="font-weight:400;color:#2F5FD2">{{ balance_usd }} {{ default }}</span></h2>
 
 
                 </div>
             <form style="margin-left:6%" action="/auth/transaction" method="post">
                 <input rel="popover"
-                data-content="Remember, Usernames are case sensitive. Check spelling and Capitalisation. Perhaps you tried to send to yourself?"
-                data-original-title="The User does not exist"
+                data-content="Remember, Usernames are case sensitive. Check spelling and Capitalisation. Also, perhaps your amount
+                was smaller than the minimum for {{ default }}: {{ min_cur }}?"
+                data-original-title="Error"
                        data-placement="top"
                        placeholder="Recipient Username" required="required" name="recipient" id="recipient"
                        style="border-radius:0;border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:8%;outline: none;"
@@ -267,8 +269,8 @@ $(function() {
                 <br>
 
                 <div class="inputContainer">
-                    <label>$</label>
-                    <div><input placeholder="Amount in USD" type="text" required="required" name="amount" id="amount" style="border-radius:0;border:0;border-bottom:1px solid #2F5FD2;" /></div>
+                    <!--<label>$</label>-->
+                    <div><input placeholder="Amount in {{ default }} (No Symbol)" type="text" required="required" name="amount" id="amount" style="border-radius:0;border:0;border-bottom:1px solid #2F5FD2;" /></div>
                 </div>
 
                 <br>

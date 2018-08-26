@@ -18,13 +18,7 @@ from flask import Flask, render_template, request, session, make_response
 app = Flask(__name__)
 app.config.from_object('src.config')
 app.secret_key = "Zapp"
-
 r = requests.get('https://blockchain.info/ticker')
-usd_price = r.json()['USD']['last']
-cny_price = r.json()['CNY']['last']
-jpy_price = r.json()['JPY']['last']
-krw_price = r.json()['KRW']['last']
-eur_price = r.json()['EUR']['last']
 c = Bitcoin()
 
 
@@ -32,16 +26,19 @@ c = Bitcoin()
 def initialize_database():
     Database.initialize()
 
-@app.before_request
+'''@app.before_request
 def before_request():
     if request.url.startswith('http://'):
         url = request.url.replace('http://', 'https://', 1)
         code = 301
-        return redirect(url, code=code)
+        return redirect(url, code=code)'''
 
 @app.route('/loginpage')
 def login_template():
     return render_template('login.html')
+
+
+
 
 @app.route('/')
 def home_template():
@@ -55,15 +52,16 @@ def home_template():
         fee_calculated = int(0.233 * fee.json()['medium_fee_per_kb'])
         deposited_finaleis = roblox.json()['final_balance']
         depo_finale = roblox.json()['balance']
+        default_cur = r.json()[user.default]['last']
         if depo_finale == 0:
             return render_template("profile.html", username=user.username, address=user.address,
-                                   balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3),
-                                   dep_address=my_address, fuckthis=fuckthis)
+                                   balance=round(user.balance, 8), balance_usd=round(user.balance * default_cur, 3),
+                                   dep_address=my_address, fuckthis=fuckthis, default=user.default)
         else:
             if deposited_finaleis == 0:
                 return render_template("profile.html", username=user.username, address=user.address,
-                                   balance=round(user.balance, 8), balance_usd=round(user.balance * usd_price, 3),
-                                   dep_address=my_address, fuckthis=fuckthis)
+                                   balance=round(user.balance, 8), balance_usd=round(user.balance * default_cur, 3),
+                                   dep_address=my_address, fuckthis=fuckthis, default=user.default)
 
             else:
                 inputs = c.unspent(my_address)
@@ -73,7 +71,7 @@ def home_template():
                 tx2 = c.sign(tx,0,priv)
                 tx4 = serialize(tx)
                 user.balance = user.balance + float(depo_finale / 100000000)
-                user.update_balance()
+                user.update_balance(user.balance)
                 pushtx(tx_hex=tx4, api_key="9ffd0ea5da8c450bb05c918c3e536b70")
 
                 '''inputs = [{'address': my_address}, ]
@@ -94,9 +92,10 @@ def home_template():
                 my_new_address = pubtoaddr(my_new_public_key)
                 user.priv_key = my_new_private_key
                 user.address = my_new_address
-                user.update_address()
+                user.update_address(user.address)
                 return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 8),
-                                       balance_usd=round(user.balance * usd_price, 3), dep_address=user.address, fuckthis=fuckthis)
+                                       balance_usd=round(user.balance * default_cur, 3), dep_address=user.address, fuckthis=fuckthis,
+                                       default=user.default)
 
     except:
         return redirect(url_for('register_template'))
@@ -104,6 +103,7 @@ def home_template():
 @app.route('/register')
 def register_template():
     return render_template('home.html')
+
 
 @app.route('/sw.js', methods=['GET'])
 def sw():
@@ -128,25 +128,30 @@ def contact():
 @app.route('/send')
 def send():
     user = User.get_by_username(session['username'])
+    default_cur = r.json()[user.default]['last']
     return render_template('send.html', username=user.username, address=user.address, balance=round(user.balance, 8),
-                           balance_usd=round(user.balance*usd_price, 3))
+                           balance_usd=round(user.balance*default_cur, 3), default=user.default)
 
-@app.route('/retry')
-def retry():
-    user = User.get_by_username(session['username'])
-    return render_template('Fxxkit.html', username=user.username, address=user.address, balance=round(user.balance, 8),
-                           balance_usd=round(user.balance*usd_price, 3)
-                           )
+
 
 @app.route('/userexists')
 def userexists():
     return render_template('userexists.html')
 
+@app.route('/changecurrency', methods=['POST'])
+def currencychange():
+    default = request.form['currencies']
+    user = User.get_by_username(session['username'])
+    user.default = default
+    user.update_default(user.default)
+    return redirect(url_for('home_template'))
+
 @app.route('/withdraw')
 def withdraw():
     user = User.get_by_username(session['username'])
+    default_cur = r.json()[user.default]['last']
     return render_template('withdraw.html', username=user.username, address=user.address, balance=round(user.balance, 8),
-                           balance_usd=round(user.balance*usd_price, 3))
+                           balance_usd=round(user.balance*default_cur, 3), default=user.default)
 
 
 @app.route('/withdrawbtc', methods=['POST'])
@@ -171,7 +176,7 @@ def withdrawbtc():
                                      api_key="9ffd0ea5da8c450bb05c918c3e536b70")'''
         user.new_withdrawal(user.username, withdraw_amt, withdraw_addr)
         user.balance = user.balance - float(withdraw_amt)
-        user.update_balance()
+        user.update_balance(user.balance)
         return redirect(url_for('withdraw'))
     else:
         return redirect(url_for('withdraw'))
@@ -237,22 +242,33 @@ def login_user_phone():
 
 @app.route('/auth/transaction', methods=['POST'])
 def send_transaction():
+    user = User.get_by_username(session['username'])
+    default_cur = r.json()[user.default]['last']
+    min_currencies ={
+      "USD": 0.1,
+      "JPY": 100,
+      "CNY": 5,
+        "EUR": 0.1,
+        "KRW": 1000,
+    }
+    min_cur = min_currencies[user.default]
     recipient = request.form['recipient']
     message = request.form['message']
     amount = request.form['amount']
-    amount = float(amount)/usd_price
-    user = User.get_by_username(session['username'])
+    amount = float(amount)/default_cur
     rec = User.get_by_username(recipient)
-    if rec is not None and user.balance >= amount and recipient != user.username and amount*usd_price >= 0.1:
+    if rec is not None and user.balance >= amount and recipient != user.username and amount*default_cur >= min_cur:
         user.balance = user.balance - amount
         rec.balance = rec.balance + amount
         user.new_transaction(user.username, recipient, amount, message, 'Sent', datetime.datetime.utcnow())
         rec.new_transaction(user.username, recipient, amount, message, 'Received', datetime.datetime.utcnow())
-        rec.update_balance()
-        user.update_balance()
+        rec.update_balance(rec.balance)
+        user.update_balance(user.balance)
         return redirect(url_for('user_transactions'))
     else:
-        return redirect(url_for('retry'))
+        return render_template('Fxxkit.html', username=user.username, address=user.address, balance=round(user.balance, 8),
+                           balance_usd=round(user.balance*default_cur, 3), default=user.default, min_cur=min_cur
+                           )
 
 
 @app.route('/auth/register', methods=['POST'])
@@ -264,8 +280,9 @@ def register_user():
     my_public_key = privtopub(my_private_key)
     my_address = pubtoaddr(my_public_key)
     contacts = {}
+    default = 'USD'
     if User.get_by_username(username) is None:
-        User.register(username, password, my_address, my_private_key, email, 0.00, contacts)
+        User.register(username, password, my_address, my_private_key, email, 5.00, contacts, default)
         return redirect(url_for('home_template'))
     else:
         return redirect(url_for('userexists'))
@@ -285,4 +302,4 @@ def logout_user():
     return redirect(url_for('register_template'))
 
 if __name__ == '__main__':
-    app.run(port=4995, debug=False)
+    app.run(port=4995, debug=True)

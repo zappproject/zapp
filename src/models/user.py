@@ -9,7 +9,7 @@ __author__ = 'jslvtr'
 
 
 class User(object):
-    def __init__(self, username, password, address, priv_key, email, balance, contacts, _id=None):
+    def __init__(self, username, password, address, priv_key, email, balance, contacts, default, _id=None):
         self.username = username
         self.password = password
         self.address = address
@@ -17,6 +17,7 @@ class User(object):
         self.email = email if email is not None else "none"
         self.balance = balance
         self.contacts = contacts
+        self.default = default
         self._id = uuid.uuid4().hex if _id is None else _id
 
     @staticmethod
@@ -51,11 +52,11 @@ class User(object):
         return False
 
     @classmethod
-    def register(cls, username, password, address, priv_key, email, balance, contacts):
+    def register(cls, username, password, address, priv_key, email, balance, contacts, default):
         user = cls.get_by_username(username)
         if user is None:
             # User doesn't exist, so we can create it
-            new_user = cls(username, password, address, priv_key, email, balance, contacts)
+            new_user = cls(username, password, address, priv_key, email, balance, contacts, default)
             new_user.save_to_mongo()
             session['username'] = username
             session['address'] = address
@@ -109,17 +110,21 @@ class User(object):
             "email": self.email,
             "contacts": self.contacts,
             "balance": self.balance,
+            "default": self.default
 
         }
 
     def save_to_mongo(self):
         Database.insert("users", self.json())
 
-    def update_balance(self):
-        Database.update('users', {"username": self.username}, self.json())
+    def update_balance(self, balance):
+        Database.update('users', {"username": self.username}, {'$set': {'balance': balance}})
 
-    def update_address(self):
-        Database.update('users', {"username": self.username}, self.json())
+    def update_address(self, address):
+        Database.update('users', {"username": self.username}, {'$set': {'address': address}})
+
+    def update_default(self, default):
+        Database.update('users', {"username": self.username}, {'$set': {'default': default}})
 
     def update_contacts(self, contacts):
         Database.update('users', {"username": self.username}, {'$set': {'contacts': contacts}})

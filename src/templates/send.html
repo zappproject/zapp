@@ -98,17 +98,17 @@
         }
 
         .inputContainer {
-            width: 150px;
+            width: 250px;
             margin-top:15%;
+            outline:none;
             height:50px
 
         }
         .inputContainer label {
             float: left;
             margin-right: -6%;
-            font-size:17px;
-            margin-top:0.45%;
-            height:100%;
+            font-size:17.5px;
+            margin-top:0%;
 
 
         }
@@ -123,11 +123,11 @@
             display: block;
              text-align:left;
              outline:none;
-             padding-left:10%;
-             font-size:16px;
+             padding-left:0%;
+             font-size:17px;
         }
 
-        @media (max-width: 500px) {
+        @media only screen and (max-width: 500px) {
         .inputContainer label {
             margin-top:0.2%;
             font-size:20px;
@@ -248,7 +248,7 @@
                     <h2 class="header" style="font-size:21px;font-weight:300;margin-top:3%;margin-left:6%"><span
                             style="font-weight:400;color:#2F5FD2">{{ balance }} BTC</span></h2>
                     <h2 class="header" style="font-size:18px;font-weight:300;margin-top:1%;margin-left:6%"><span
-                            style="font-weight:400;color:#2F5FD2">{{ balance_usd }} USD</span></h2>
+                            style="font-weight:400;color:#2F5FD2">{{ balance_usd }} {{ default }}</span></h2>
 
 
                 </div>
@@ -258,8 +258,8 @@
                        type="text" class="input-send" onkeypress="return AvoidSpace(event)" >
                 <br>
                 <div class="inputContainer">
-                    <label>$</label>
-                    <div><input placeholder="Amount in USD" type="text"  required="required" name="amount" id="amount" style="border-radius:0;border:0;border-bottom:1px solid #2F5FD2;" /></div>
+                    <!--<label>$</label>-->
+                    <div><input placeholder="Amount in {{ default }} (No Symbol)" type="text"  required="required" name="amount" id="amount" style="border-radius:0;border:0;border-bottom:1px solid #2F5FD2;" /></div>
                 </div>
                 <!--<div style="overflow: hidden;width:300px;height;50px;margin-top:10%;user-select: none;outline: none;">
                   <!--<div class="input-group-prepend" id="cont-us">
