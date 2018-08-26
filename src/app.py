@@ -282,7 +282,7 @@ def register_user():
     contacts = {}
     default = 'USD'
     if User.get_by_username(username) is None:
-        User.register(username, password, my_address, my_private_key, email, 5.00, contacts, default)
+        User.register(username, password, my_address, my_private_key, email, 0.00, contacts, default)
         return redirect(url_for('home_template'))
     else:
         return redirect(url_for('userexists'))
