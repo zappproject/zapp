@@ -95,14 +95,29 @@
             width:50%;
             margin-left:3.5%;
         }
-        #cont-us{
-            background-color:white;
+
+        .inputContainer {
+            width: 150px;
+            margin-top:10%
+        }
+        .inputContainer label {
+            float: left;
+            margin-right: -6%;
+
+        }
+        .inputContainer div {
+            overflow: hidden;
+        }
+        .inputContainer input {
+            width: 100%;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: block;
+             text-align:center;
         }
 
         @media (max-width: 500px) {
-            #cont-us{
-                background-color:white;
-            }
             .sendhead {
                 margin-top:11%;
             }
@@ -224,12 +239,17 @@
                        style="border:0;border-bottom:1px solid #2F5FD2;height;50px;margin-top:8%;outline: none;"
                        type="text" class="input-send" onkeypress="return AvoidSpace(event)" >
                 <br>
-                <div class="input-group mb-3" style="height;50px;margin-top:10%;user-select: none;outline: none;">
-                  <div class="input-group-prepend" id="cont-us">
+                <div class="inputContainer">
+                    <label>$</label>
+                    <div><input style="border:0;border-bottom:1px solid #2F5FD2;" /></div>
+                </div>
+                <!--<div style="overflow: hidden;width:300px;height;50px;margin-top:10%;user-select: none;outline: none;">
+                  <!--<div class="input-group-prepend" id="cont-us">
                     <span class="input-group-text">$</span>
                   </div>
-                  <input style="outline:none;border-right:0;border-top:0;border-bottom:1px solid #2F5FD2;" placeholder="Amount in USD" type="text" class="form-control input-send" required="required" name="amount" id="amount">
-                </div>
+                    <label style="float:left;margin-right: 5px">$</label>
+                  <input style="width: 100%;display: block;outline:none;border:0;border-bottom:1px solid #2F5FD2;box-sizing: border-box;" placeholder="Amount in USD" type="text" class="form-control input-send" required="required" name="amount" id="amount">
+                </div>-->
 
                 <br>
                 <textarea placeholder="Message" required="required" name="message" id="message" class="input-send"

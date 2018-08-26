@@ -104,6 +104,26 @@ $(function() {
             width:50%;
             margin-left:3.5%;
         }
+        .inputContainer {
+            width: 150px;
+            margin-top:10%
+        }
+        .inputContainer label {
+            float: left;
+            margin-right: -6%;
+
+        }
+        .inputContainer div {
+            overflow: hidden;
+        }
+        .inputContainer input {
+            width: 100%;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: block;
+            text-align:center;
+        }
 
         @media (max-width: 500px) {
             .sendhead {
@@ -232,11 +252,9 @@ $(function() {
                        type="text" class="input-send" onkeypress="return AvoidSpace(event)" >
                 <br>
 
-                <div class="input-group mb-3" style="border:0;;height;50px;margin-top:10%;user-select: none;outline: none;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                  </div>
-                  <input placeholder="Amount in USD" type="text" class="form-control input-send" required="required" name="amount" id="amount" aria-label="Amount (to the nearest dollar)">
+                <div class="inputContainer">
+                    <label>$</label>
+                    <div><input style="border:0;border-bottom:1px solid #2F5FD2;" /></div>
                 </div>
 
                 <br>
