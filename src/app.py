@@ -26,17 +26,16 @@ c = Bitcoin()
 def initialize_database():
     Database.initialize()
 
-'''@app.before_request
+@app.before_request
 def before_request():
     if request.url.startswith('http://'):
         url = request.url.replace('http://', 'https://', 1)
         code = 301
-        return redirect(url, code=code)'''
+        return redirect(url, code=code)
 
 @app.route('/loginpage')
 def login_template():
     return render_template('login.html')
-
 
 
 
@@ -45,7 +44,7 @@ def home_template():
     try:
         user = User.get_by_username(session['username'])
         my_address = user.address
-        fuckthis = 'https://api.qrserver.com/v1/create-qr-code/?data={}&amp;size=100x100'.format(my_address)
+        #fuckthis = 'https://api.qrserver.com/v1/create-qr-code/?data={}&amp;size=100x100'.format(my_address)
         priv = user.priv_key
         roblox = requests.get('https://api.blockcypher.com/v1/btc/main/addrs/{}/balance'.format(my_address))
         fee = requests.get('http://api.blockcypher.com/v1/btc/main')
@@ -53,15 +52,16 @@ def home_template():
         deposited_finaleis = roblox.json()['final_balance']
         depo_finale = roblox.json()['balance']
         default_cur = r.json()[user.default]['last']
+        #fuckthis = fuckthis
         if depo_finale == 0:
             return render_template("profile.html", username=user.username, address=user.address,
                                    balance=round(user.balance, 8), balance_usd=round(user.balance * default_cur, 3),
-                                   dep_address=my_address, fuckthis=fuckthis, default=user.default)
+                                   dep_address=my_address, default=user.default)
         else:
             if deposited_finaleis == 0:
                 return render_template("profile.html", username=user.username, address=user.address,
                                    balance=round(user.balance, 8), balance_usd=round(user.balance * default_cur, 3),
-                                   dep_address=my_address, fuckthis=fuckthis, default=user.default)
+                                   dep_address=my_address, default=user.default)
 
             else:
                 inputs = c.unspent(my_address)
@@ -94,7 +94,7 @@ def home_template():
                 user.address = my_new_address
                 user.update_address(user.address)
                 return render_template("profile.html", username=user.username, address=user.address, balance=round(user.balance, 8),
-                                       balance_usd=round(user.balance * default_cur, 3), dep_address=user.address, fuckthis=fuckthis,
+                                       balance_usd=round(user.balance * default_cur, 3), dep_address=user.address,
                                        default=user.default)
 
     except:

@@ -3,7 +3,16 @@ var urlsToCache = [
   '/register',
   '/loginpage',
   '/static/css/main.css',
-  '/static/script.js'
+  '/static/css/12345.css',
+  '/static/css/homeuserexists.css',
+  '/static/css/profile.css',
+  '/static/css/sendfxxkit.css',
+  '/static/css/trans.css',
+  '/static/script.js',
+  '/static/Javascript/12345.js',
+  '/static/Javascript/homeuserexists.js',
+  '/static/Javascript/profile.js',
+  '/static/Javascript/sendfxxkit.js',
 ];
 self.addEventListener('install', function(event) {
   // install files needed offline
